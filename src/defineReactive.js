@@ -1,6 +1,9 @@
+import Dep from './Dep';
 import observe from './observe'
 
 export default function defineReactive (data, key, val) {
+  const dep = new Dep();
+
   if (arguments.length == 2) {
     val = data[key]
   }
@@ -23,6 +26,9 @@ export default function defineReactive (data, key, val) {
       if (val === newVal) return;
       val = newVal;
       childOb = observe(newVal)
+      // 通知dep;
+
+      dep.notify();
     }
   })
 };

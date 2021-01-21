@@ -56,7 +56,8 @@ methodsNeedChange.forEach(methodName => {
     }
 
     //监控到数组的方法
-    console.log('aaa');
+    console.log('监控到数组的方法', methodName, ...args);
+    ob.dep.notify();
 
     return result;
   }, false)

@@ -2,9 +2,13 @@ import { def } from './utils'
 import defineReactive from './defineReactive'
 import { arrayMethods } from './array'
 import observe from './observe';
+import Dep from './Dep';
 
 export default class Observer {
   constructor(value) {
+    // 每一个Observer的实例身上，都有一个dep
+    this.dep = new Dep();
+
     // console.log('我是Observer构造器', value);
     // 给实例（this）加了一个__ob__属性
     def(value, '__ob__', this, false);
