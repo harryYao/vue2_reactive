@@ -16,3 +16,5 @@ observe(obj);
 // console.log(obj.a.b.m);
 obj.d.push(8)
 console.log(obj.d);
+obj.d.splice(2, 1, [10, 20]);
+console.log(obj.d);
