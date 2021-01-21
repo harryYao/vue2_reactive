@@ -1,5 +1,15 @@
-import hi from './hi.js'
 
-console.log(hi)
+import observe from './observe'
 
-console.log('sss');
+var obj = {
+  a: {
+    b: {
+      m: 'mm'
+    }
+  },
+  c: 10
+}
+
+observe(obj);
+obj.c++;
+console.log(obj.a.b.m);
