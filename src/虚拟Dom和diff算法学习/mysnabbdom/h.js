@@ -22,7 +22,8 @@ export default function(sel, data, c) {
     }
     return vnode(sel, data, children, undefined, undefined)
   } else if (typeof c == 'object' && c.hasOwnProperty('sel')) {
-
+    let children = [c];
+    return vnode(sel, data, children, undefined, undefined)
   } else {
     throw new Error('传入的第三个参数类型不对')
   }
