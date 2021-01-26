@@ -1,4 +1,5 @@
 import createElement from './createElement'
+import updateChildren from './updateChildren'
 
 export default function patchVnode(oldVnode, newVnode) {
   // 同一个节点，精细化比较
@@ -29,10 +30,10 @@ export default function patchVnode(oldVnode, newVnode) {
        * 四种命中查找算法顺序，命中一种就不再往下判断
        * ①、新前与旧前
        * ②、新后与旧后
-       * ③、新后与旧前
+       * ③、新后与旧前 
        * ④、新前与旧后
        *****************************************************************/
-
+      updateChildren(oldVnode.elm, oldVnode.children, newVnode.children)
     }
   }
 }

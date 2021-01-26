@@ -41,22 +41,39 @@ const myVode6 = h('section', {}, [
 ]);
 
 
+// test updateChildren  
 const ss1 = h('section', {}, [
   h('p', { key: 'p1' }, 'p1'),
   h('p', { key: 'p2' }, 'p2'),
   h('p', { key: 'p3' }, 'p3'),
 ]);
 const ss2 = h('section', {}, [
-  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p1' }, [
+    h('span', {}, '我'),
+    h('span', {}, ' 爱 '),
+    h('span', {}, ' 你 '),
+  ]),
   h('p', { key: 'p2' }, 'p2'),
-  h('p', { key: 'ph' }, 'ph'),
   h('p', { key: 'p3' }, 'p3'),
-  h('p', { key: 'pm' }, 'pm'),
 ]);
 
-patch(container, ss1)
+
+// test updateChildren  
+const ss3 = h('section', {}, [
+  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p2' }, 'p2'),
+  h('p', { key: 'p3' }, 'p3'),
+]);
+const ss4 = h('section', {}, [
+  h('p', { key: 'p2' }, 'p2 lala'),
+  h('p', { key: 'p3' }, 'p3 haha'),
+  h('p', { key: 'p1' }, 'P1 new text'),
+]);
+
+
+patch(container, ss3)
 
 btn.onclick = () => {
-  patch(ss1, ss2)
+  patch(ss3, ss4)
 }
 
