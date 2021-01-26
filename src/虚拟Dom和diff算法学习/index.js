@@ -33,9 +33,30 @@ const myVode4 = h('div', {}, [
   ]),
 ]);
 
-patch(container, myVode1)
+const myVode5 = h('section', {}, '我是文本')
+const myVode6 = h('section', {}, [
+  h('p', {}, 'ss1'),
+  h('p', {}, 'vvvvvvvvvvvvv'),
+  h('p', {}, 'ssssss'),
+]);
+
+
+const ss1 = h('section', {}, [
+  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p2' }, 'p2'),
+  h('p', { key: 'p3' }, 'p3'),
+]);
+const ss2 = h('section', {}, [
+  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p2' }, 'p2'),
+  h('p', { key: 'ph' }, 'ph'),
+  h('p', { key: 'p3' }, 'p3'),
+  h('p', { key: 'pm' }, 'pm'),
+]);
+
+patch(container, ss1)
 
 btn.onclick = () => {
-  patch(myVode1, myVode3)
+  patch(ss1, ss2)
 }
 
