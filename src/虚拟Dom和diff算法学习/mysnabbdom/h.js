@@ -9,7 +9,7 @@ export default function(sel, data, c) {
     throw new Error('必须接受3个参数，缺一不可，暂不实现较复杂重载')
   }
 
-  console.log(sel, data, c);
+  // console.log(sel, data, c);
   if (typeof c == 'string' || typeof c == 'number') {
     return vnode(sel, data, undefined, c, undefined)
   } else if (Array.isArray(c)) {
