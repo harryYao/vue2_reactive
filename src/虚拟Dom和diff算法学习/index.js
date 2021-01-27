@@ -59,21 +59,46 @@ const ss2 = h('section', {}, [
 
 
 // test updateChildren  
-const ss3 = h('section', {}, [
+const ss4 = h('section', {}, [
   h('p', { key: 'p1' }, 'p1'),
   h('p', { key: 'p2' }, 'p2'),
   h('p', { key: 'p3' }, 'p3'),
 ]);
-const ss4 = h('section', {}, [
+const ss3 = h('section', {}, [
+  h('p', { key: 'p1' }, 'P1 new text'),
   h('p', { key: 'p2' }, 'p2 lala'),
   h('p', { key: 'p3' }, 'p3 haha'),
-  h('p', { key: 'p1' }, 'P1 new text'),
+  h('p', { key: 'p4' }, 'p4'),
+  h('p', { key: 'p5' }, 'p5'),
+  h('p', { key: 'p6' }, 'p6'),
 ]);
 
 
-patch(container, ss3)
+
+// test updateChildren  
+const q1 = h('section', {}, [
+  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p2' }, 'p2'),
+  h('p', { key: 'p3' }, 'p3'),
+  h('p', { key: 'p4' }, 'p4'),
+  h('p', { key: 'p5' }, 'p5'),
+]);
+// test updateChildren  
+const q2 = h('section', {}, [
+  h('p', { key: 'p2' }, 'p2'),
+  h('p', { key: 'pppp' }, 'pppp'),
+  h('p', { key: 'p3' }, 'p3'),
+  h('p', { key: 'p1' }, 'p1'),
+  h('p', { key: 'p5' }, 'p5'),
+  h('p', { key: 'nnnn' }, 'nnmmmmn'),
+  h('p', { key: 'kk' }, 'kkkkkkkkkk'),
+  h('p', { key: 'p4' }, 'p4'),
+]);
+
+
+patch(container, q1)
 
 btn.onclick = () => {
-  patch(ss3, ss4)
+  patch(q1, q2)
 }
 

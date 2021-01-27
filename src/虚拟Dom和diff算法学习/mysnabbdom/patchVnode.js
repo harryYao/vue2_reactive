@@ -9,12 +9,12 @@ export default function patchVnode(oldVnode, newVnode) {
 
   //判断newVnode有没有text属性
   if (newVnode.text != undefined && (newVnode.children == undefined || newVnode.children.length == 0)) {
-    console.log('新节点有text属性', newVnode.text);
+    // console.log('新节点有text属性', newVnode.text);
     if (newVnode.text != oldVnode.text) {
       oldVnode.elm.innerText = newVnode.text;
     }
   } else {
-    console.log('新节点没有text属性，即有children属性');
+    // console.log('新节点没有text属性，即有children属性');
     // 判断oldVnode有没有children
     if (oldVnode.children == undefined || oldVnode.children.length == 0) {
       // 老节点没有children属性，有text属性时，清空text，再添加newVnode的children节点
@@ -37,10 +37,6 @@ export default function patchVnode(oldVnode, newVnode) {
     }
   }
 }
-
-
-
-
 
 
 /*****************************************************************
