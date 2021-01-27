@@ -85,6 +85,7 @@ export default function updateChildren(parentElm, oldCh, newCh) {
                 // 找到了，表示已存在, 需要移动和更新
                 console.log(`keyMap 找到${idxInOld} 表示已存在, key:${newStartVnode.key}`);
                 const elmToMove = oldCh[idxInOld];
+                
                 patchVnode(elmToMove, newStartVnode);
                 oldCh[idxInOld] = undefined;
                 parentElm.insertBefore(elmToMove.elm, oldStartVnode.elm)
@@ -97,21 +98,22 @@ export default function updateChildren(parentElm, oldCh, newCh) {
     //匹配结束后， 继续看看有没有剩余节点
     if (newStartIdx <= newEndIdx) {
         // new还有剩余节点没有处理，那么应该是新增
+        // console.log('new还有剩余节点没有处理，那么应该是新增', newEndIdx, newCh, newCh[7] );
         // 插入的标杆
-        const before = newCh[newEndIdx + 1] == null ? null: newCh[newEndIdx + 1].elm;
+        const before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].elm;
+        // 在复杂案例中，视频中before.elm 为空，导致插入问题，在patchVnode中修复
+        // console.log('before:', before);
         
         for (let i = newStartIdx; i <= newEndIdx; i++) {
             // insertBefore 自动识别null，如果是null则自动加到队尾去，和appendChild一致
-            console.log('new还有剩余节点没有处理，那么应该是新增', oldStartIdx, newCh[i].text);
-            // parentElm.insertBefore(createElement(newCh[i]), before) // 源码如此，但是视频课程改为如下，是有bug的 TODO
-            parentElm.insertBefore(createElement(newCh[i]), oldCh[oldStartIdx].elm)
+            parentElm.insertBefore(createElement(newCh[i]), oldCh[oldStartIdx].elm) // 视频课程改为这样，但是这是有bug的 
+            // parentElm.insertBefore(createElement(newCh[i]), before)
         }
     } else if (oldStartIdx <= oldEndIdx){
         console.log(oldCh);
         // old还有剩余节点没有处理，那么应该要删除
         for (let i = oldStartIdx; i <= oldEndIdx; i++) {
-            // oldCh[i] && 
-            parentElm.removeChild(oldCh[i].elm)
+            oldCh[i] && parentElm.removeChild(oldCh[i].elm)
         }
     }
 
@@ -120,3 +122,5 @@ export default function updateChildren(parentElm, oldCh, newCh) {
 function sameVnode(a, b) {
     return a.key === b.key && a.sel == b.sel
 }
+
+

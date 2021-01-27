@@ -2,10 +2,15 @@ import createElement from './createElement'
 import updateChildren from './updateChildren'
 
 export default function patchVnode(oldVnode, newVnode) {
+
+
   // 同一个节点，精细化比较
 
   // 判断新旧vnode是否是同一个对象
   if (oldVnode === newVnode) return;
+
+  // 本行代码视频中没有，导致复杂的替换存在问题，每次patchVnode时，都应将oldVnode.elm赋值给新的newVnode.elm
+  newVnode.elm = oldVnode.elm;
 
   //判断newVnode有没有text属性
   if (newVnode.text != undefined && (newVnode.children == undefined || newVnode.children.length == 0)) {

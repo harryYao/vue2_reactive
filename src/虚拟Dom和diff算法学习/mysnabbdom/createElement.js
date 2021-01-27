@@ -16,6 +16,9 @@ export default function createElement(vnode) {
       // 上树
       domNode.appendChild(chDOM)
     }
+  } else { 
+    // 形态③ h('div', {}, h())
+    // TODO
   }
 
   // 补充elm属性
