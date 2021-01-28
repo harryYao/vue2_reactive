@@ -106,8 +106,8 @@ export default function updateChildren(parentElm, oldCh, newCh) {
         
         for (let i = newStartIdx; i <= newEndIdx; i++) {
             // insertBefore 自动识别null，如果是null则自动加到队尾去，和appendChild一致
-            parentElm.insertBefore(createElement(newCh[i]), oldCh[oldStartIdx].elm) // 视频课程改为这样，但是这是有bug的 
-            // parentElm.insertBefore(createElement(newCh[i]), before)
+            // parentElm.insertBefore(createElement(newCh[i]), oldCh[oldStartIdx].elm) // 视频课程改为这样，但是这是有bug的 
+            parentElm.insertBefore(createElement(newCh[i]), before)
         }
     } else if (oldStartIdx <= oldEndIdx){
         console.log(oldCh);
