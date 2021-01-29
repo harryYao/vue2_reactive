@@ -4,6 +4,9 @@ import { arrayMethods } from './array'
 import observe from './observe';
 import Dep from './Dep';
 
+/**
+ * 将一个object转化为每个层级的属性都是响应式的object
+ */
 export default class Observer {
   constructor(value) {
     // 每一个Observer的实例身上，都有一个dep
@@ -24,7 +27,9 @@ export default class Observer {
     }    
   }
 
-  // 遍历
+  /**
+   * 遍历
+   */
   walk(value) {
     for (const k in value) {
       defineReactive(value, k)

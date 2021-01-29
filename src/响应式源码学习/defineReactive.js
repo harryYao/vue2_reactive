@@ -2,6 +2,8 @@ import Dep from './Dep';
 import observe from './observe'
 
 export default function defineReactive (data, key, val) {
+
+  console.log('====>', 'defineReactive函数', data, key);
   const dep = new Dep();
 
   if (arguments.length == 2) {
