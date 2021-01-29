@@ -27,3 +27,10 @@ new Watcher(obj, 'a.b.m', (val) => {
 
 obj.a.b.m = 'haha'
 // console.log(obj)
+
+
+// const longestRepetition = s => s ?
+//   s.match(/(.)\1*/g)
+//     .reduce((m,n) =>  m.length > n.length ? m: n)
+//     .split().map(m => [m[0], m.length]) :
+//   ['', 0];
