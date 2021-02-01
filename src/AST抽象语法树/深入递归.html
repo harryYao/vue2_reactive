@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 将高维数组变为对象, 例
+    // [1,2,3,[4,[5,6],7],8]
+    //   [
+    //     { value: 1 },
+    //     { value: 2 },
+    //     { value: 3 },
+    //     { children: [
+    //       { value: 4 },
+    //       { children : [
+            
+    //         { value: 5 },
+    //         { value: 6 },
+    //       ]},
+    //       { value: 7 },
+    //     ]},
+    //     { value: 8 },
+    //   ]
+
+    function convert1(obj) {
+      let arr = []
+      for (let i = 0; i < obj.length; i++) {
+        if (Array.isArray( obj[i])) {
+          arr.push( { children: convert1(obj[i]) })
+        } else {
+          arr.push( { value: obj[i] })
+        }
+      }
+      return arr
+    }
+
+    function convert (item) {
+      return Array.isArray(item)? { children: item.map( m => convert(m) )}:  { value: item }
+    }
+
+    var a = [1,2,3,[4,[5,6],7],8];
+    var rst = convert(a)
+    console.log(rst)
+
+    
+    /**
+     * 斐波那契数列
+     **/
+    const fb = (n, a1 = 1, a2 = 1) => { return n <= 1 ? a1: fb(n - 1, a2, a1 + a2) };
+
+  </script>
+</body>
+</html>
