@@ -3,7 +3,8 @@ const path = require('path')
 module.exports = {
     entry: {
         first: './src/响应式源码学习/index.js',
-        second: './src/虚拟Dom和diff算法学习/index.js'
+        second: './src/虚拟Dom和diff算法学习/index.js',
+        third: './src/AST抽象语法树/index.js'
     },
     output: {
         publicPath: 'xuni',
