@@ -2,8 +2,7 @@ import parse from "./parse";
 
 var templateStr = `
   <div>
-    <h3>你好</h3>
-    问问
+    <h3 id="mytitle" class="title">你好</h3>
     <ul>
       <li>A</li>
       <li>B</li>

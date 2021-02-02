@@ -1,3 +1,5 @@
+import parseAttrsString from './parseAttrsString'
+
 /**
  * 主函数
  * @param {templateStr} HTML字符串 
@@ -8,7 +10,8 @@ export default function(templateStr) {
   const stack2 = [{children: []}];
   let rest = '';
   // 开始标记
-  const startRegExp = /^\<([a-z]+[1-6]?)\>/;
+  const startRegExp = /^\<([a-z]+[1-6]?)(\s[^\<]+)?\>/;
+  // 结束标记
   const endRegExp = /^\<\/([a-z]+[1-6]?)\>/;
   // 抓取结束标记前的文字
   const wordRegExp = /^([^\<]+)\<\/[a-z]+[1-6]?\>/;
@@ -16,11 +19,13 @@ export default function(templateStr) {
   while (index < templateStr.length) {
     rest = templateStr.substring(index);
     if (startRegExp.test(rest)) {
-      let tag = rest.match(startRegExp)[1];
-      // console.log('111 开始标记————', tag);
+      let match = rest.match(startRegExp);
+      let tag = match[1];
+      let attrs = match[2];
+      console.log('111 开始标记————', attrs);
       stack1.push(tag)
-      stack2.push({ tag: tag, children: [] })
-      index += tag.length + 2
+      stack2.push({ tag: tag, children: [], attrs: parseAttrsString(attrs) })
+      index += tag.length + 2 + (attrs ? attrs.length : 0) 
       // console.log(stack1, stack2);
     } else if (endRegExp.test(rest)) {
       let tag = rest.match(endRegExp)[1];
@@ -36,7 +41,7 @@ export default function(templateStr) {
         throw new Error('检测到有不闭合标签')
       }
       index += tag.length + 3
-      console.log(stack1, JSON.stringify( stack2))
+      // console.log(stack1, JSON.stringify( stack2))
 
     } else if (wordRegExp.test(rest)) {
       // 识别遍历到的这个字符，是不是文字，并且不能全是空
