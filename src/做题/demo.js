@@ -61,3 +61,21 @@ function duplicateEncode(word){
 // 技巧在于2点
 // 1. map的第三个参数为数组本身
 // 2. 这个判断 indexOf == lastIndexOf
+
+
+
+// 给定大小为2D的数组m * n。您的任务是在每一行中找到最小值的总和。
+
+var test = [
+  [1, 2, 3, 4, 5],       // minimum value of row is 1
+  [5, 6, 7, 8, 9],       // minimum value of row is 5
+  [20, 21, 34, 56, 100]  // minimum value of row is 20
+]
+
+function sumOfMinimums(arr) {
+  arr.map(i => Math.min(i)).reduce((a,b) => a+b)
+}
+function sumOfMinimums2(arr) {
+  arr.reduce((a,b) => a + Math.min(...b), 0)
+}
+sumOfMinimums(test)
