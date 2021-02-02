@@ -5,7 +5,7 @@
 export default function(templateStr) {
   let index = 0;
   const stack1 = [];
-  const stack2 = [];
+  const stack2 = [{children: []}];
   let rest = '';
   // 开始标记
   const startRegExp = /^\<([a-z]+[1-6]?)\>/;
@@ -19,20 +19,24 @@ export default function(templateStr) {
       let tag = rest.match(startRegExp)[1];
       // console.log('111 开始标记————', tag);
       stack1.push(tag)
-      stack2.push([])
+      stack2.push({ tag: tag, children: [] })
       index += tag.length + 2
       // console.log(stack1, stack2);
     } else if (endRegExp.test(rest)) {
       let tag = rest.match(endRegExp)[1];
       // console.log('222 结束标记：',tag);
+      const pop_tag = stack1.pop();
       // 此时，tag标签一定时和栈1 的顶部相同的
-      if (tag == stack1[stack1.length - 1]) {
-        stack1.pop();
+      if (tag == pop_tag) {
+        const pop_arr = stack2.pop();
+        if (stack2.length > 0) {
+          stack2[stack2.length - 1].children.push(pop_arr)
+        }
       } else {
         throw new Error('检测到有不闭合标签')
       }
       index += tag.length + 3
-      // console.log(stack1, stack2);
+      console.log(stack1, JSON.stringify( stack2))
 
     } else if (wordRegExp.test(rest)) {
       // 识别遍历到的这个字符，是不是文字，并且不能全是空
@@ -40,6 +44,8 @@ export default function(templateStr) {
       if (!/^\s+$/.test(word)) {
         // 全是空
         console.log('抓取到文字', word);
+        // 改变stack2栈顶元素
+        stack2[stack2.length - 1].children.push({ 'text': word, 'type': 3 })
       }
 
       index += word.length
@@ -47,5 +53,6 @@ export default function(templateStr) {
       index ++
       }
     }
-    return {}
+    console.log(stack2[0]);
+    return stack2[0]
   }
