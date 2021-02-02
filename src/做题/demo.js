@@ -79,3 +79,12 @@ function sumOfMinimums2(arr) {
   arr.reduce((a,b) => a + Math.min(...b), 0)
 }
 sumOfMinimums(test)
+
+
+
+// 简单的规则：您的函数应接受输入4和7。如果4输入，函数应返回7。如果7输入，函数应返回4。
+// 输入的其他任何内容都应返回0。只有一个陷阱，您的函数不能包含if语句，
+// switch语句或三元运算符（或eval函数，因为您可以绕开if要求来使用它）。
+function fourSeven(n){
+  return { 7 : 4, 4 : 7 }[n] || 0
+}
