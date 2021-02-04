@@ -30,17 +30,21 @@ export default class Compile {
   }
 
   compile(el) {
-    console.log(el);
+    // console.log(el);
     var childNodes = el.childNodes;
     var self = this;
 
     childNodes.forEach(node => {
       var text = node.textContent;
-      // console.log('forEach', node, text);
+      // console.log('forEach', text);
+
+      var reg = /\{\{(.*)\}\}/;
       if (node.nodeType == 1) {
         self.compileElement(node)
-      } else if (node.nodeType == 3) {
-        self.compileText(text);
+      } else if (node.nodeType == 3 && reg.test(text)) {
+        console.log('匹配到了');
+        let name = text.match(reg)[1]
+        self.compileText(node, name);
       }
     })
   }
@@ -48,14 +52,14 @@ export default class Compile {
   compileElement(node) {
     // 这里的方便之处在于不是将HTMl结构看成字符串，
     var nodeAttrs = node.attributes;
-    console.log(nodeAttrs);
+    // console.log(nodeAttrs);
     // 类数组对象 变为数组
     // Array.prototype.slice.call(nodeAttrs).forEach(attr => {
     [].slice.call(nodeAttrs).forEach(attr => {
       // 这里分析指令
       var attrName = attr.name;
       var value = attr.value;
-      console.log(attrName, value);
+      // console.log(attrName, value);
       var dir = attrName.substring(2);
 
       if (attrName.indexOf('v-') == 0) {
@@ -70,8 +74,21 @@ export default class Compile {
     })
   }
 
-  compileText(text) {
-    // console.log('compileText', text);
+  compileText(node, name) {
+    console.log('compileText',this.$vue, name);
+    console.log('compileText', this.getVueVal(this.$vue, name));
+    node.textContent = this.getVueVal(this.$vue, name);
+  }
+
+  getVueVal(vue, exp) {
+    var val = vue;
+    exp = exp.split('.');
+    exp.forEach(k => {
+      console.log('getVueVal exp.forEach k', k, val[k]);
+      val = val[k]
+    })
+    console.log(val);
+    return val;
   }
 }
 

@@ -21,12 +21,12 @@ export default function defineReactive (data, key, val) {
     // getter
     get() {
        
-      console.log(`捕捉到访问obj的属性${key}的行为`);
+      // console.log(`捕捉到访问obj的属性${key}的行为`);
       
       // 如果现在处于依赖的收集阶段
       if (Dep.target) {
         const tg = Dep.target;
-        console.log('Dep.target 存在，现在是依赖收集阶段。。。', tg)
+        // console.log('Dep.target 存在，现在是依赖收集阶段。。。', tg)
         dep.depend();
         if (childOb) {
           childOb.dep.depend();
@@ -38,7 +38,7 @@ export default function defineReactive (data, key, val) {
       return val;
     },
     set(newVal) {
-      console.log(`捕捉到设置obj的属性${key}的行为`, newVal);
+      // console.log(`捕捉到设置obj的属性${key}的行为`, newVal);
       if (val === newVal) return;
       val = newVal;
       childOb = observe(newVal)

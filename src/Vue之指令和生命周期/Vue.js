@@ -38,7 +38,7 @@ export default class Vue {
     var self = this;
     var watch = this.$options.watch;
     Object.keys(watch).forEach(key => {
-      new Watcher(this, key, watch[key]);
+      new Watcher(self, key, watch[key]);
     })
   }
 
