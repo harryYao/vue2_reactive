@@ -6,9 +6,36 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        <h3 class="title">你好 {{ a }}</h3>
+        <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+        <input type="text" v-model="a">
+    </div>
     <!-- <button id="btn">点击添加</button> -->
-    <div id="container"></div>
-    <!-- webpack 配置多个entry时, 修改输出的js名称来调式不同的入口文件, first.js/second.js/third.js -->
-    <script src="./xuni/third.js"></script>
+    <!-- <div id="container"></div> -->
+    <!-- webpack 配置多个entry时, 修改输出的js名称来调式不同的入口文件, first.js/second.js/third.js/four.js -->
+    <script src="./xuni/four.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                a: 10
+            },
+            created() {
+
+            },
+            watch: {
+                a() {
+                    console.log('a变了');
+                }
+            }
+        })
+
+        vm.a++
+    </script>
 </body>
 </html>
