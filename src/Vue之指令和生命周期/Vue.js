@@ -14,7 +14,7 @@ export default class Vue {
 
     this._initData();
 
-    this._initWatch();
+    // this._initWatch();
 
     // 模板编译
     new Compile(options.el, this);

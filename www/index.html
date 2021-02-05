@@ -8,13 +8,14 @@
 <body>
     <div id="app">
         你好 {{ b.m.n }}
-        <h3 class="title"></h3>
+        <br />
+        <input type="text" v-model="b.m.n">
+        <!-- <h3 class="title"></h3>
         <ul>
             <li>A</li>
             <li>B</li>
             <li>C</li>
-        </ul>
-        <input type="text" v-model="a">
+        </ul> -->
     </div>
     <!-- <button id="btn">点击添加</button> -->
     <!-- <div id="container"></div> -->
@@ -41,7 +42,7 @@
             }
         })
 
-        vm.a++
+        // vm.a++
     </script>
 </body>
 </html>

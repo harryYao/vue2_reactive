@@ -56,6 +56,7 @@ export default class Compile {
   compileElement(node) {
     // 这里的方便之处在于不是将HTMl结构看成字符串，
     var nodeAttrs = node.attributes;
+    var self = this;
     // console.log(nodeAttrs);
     // 类数组对象 变为数组
     // Array.prototype.slice.call(nodeAttrs).forEach(attr => {
@@ -70,6 +71,19 @@ export default class Compile {
         // v-开头的就是 指令
         if(dir == 'model') {
           console.log('发现了model指令');
+          // new Watcher(self.$vue, value, tt => {
+          //   console.log(`compileElement ==> 监控到了${value}变化了`, value);
+          //   node.value = tt;
+          // })
+          var v = self.getVueVal(self.$vue, value);
+          node.value = v;
+
+          node.addEventListener('input', e => {
+            var newVal = e.target.value;
+            self.setVueVal(self.$vue, value, newVal)
+            node.value = newVal
+          })
+
         } else if(dir == 'if'){
           console.log('发现了if指令');
         }
@@ -82,7 +96,7 @@ export default class Compile {
     // console.log('compileText', this.getVueVal(this.$vue, name));
     node.textContent = this.getVueVal(this.$vue, name); // 小心空格问题。
     new Watcher(this.$vue, name, value => {
-      console.log(`监控到了${name}变化了`, value);
+      console.log(` compileText ==> 监控到了${name}变化了`, value);
       node.textContent = value;
     });
   }
@@ -90,13 +104,24 @@ export default class Compile {
   getVueVal(vue, exp) {    
     var val = vue;
     exp = exp.split('.');
-    console.log(exp);
     exp.forEach(k => {
       // console.log('getVueVal exp.forEach k', k, val);
       val = val[k]
     })
     // console.log('getVueVal', val);
     return val;
+  }
+  setVueVal(vue, exp, value) {
+    var val = vue;
+    exp = exp.split('.');
+    exp.forEach((k, i) => {
+      // console.log('getVueVal exp.forEach k', k, val);
+      if (i < exp.length - 1) {
+        val = val[k]
+      } else {
+        val[k] = value
+      }
+    })
   }
 }
 
