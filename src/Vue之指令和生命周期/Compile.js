@@ -73,13 +73,13 @@ export default class Compile {
           console.log('发现了model指令');
 
           // 《BUG》 这里双向绑定还是存在问题的， Watcher函数的get()方法被指数级调用！！
-          // 尚未解决，正在排查中
-          // 
+          // 尚未解决，正在排查中 
+          // 已解决
 
-          // new Watcher(self.$vue, value, tt => {
-          //   console.log(`compileElement ==> 监控到了${value}变化了`, value);
-          //   node.value = tt;
-          // })
+          new Watcher(self.$vue, value, tt => {
+            console.log(`compileElement ==> 监控到了${value}变化了`, value);
+            node.value = tt;
+          })
           var v = self.getVueVal(self.$vue, value);
           node.value = v;
 
