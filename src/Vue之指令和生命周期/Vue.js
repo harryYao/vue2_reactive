@@ -8,6 +8,7 @@ export default class Vue {
     this.$options = options || {}
     // 数据
     this._data = options.data || undefined;
+
     //数据要变成响应式
     observe(this._data);
 
@@ -24,6 +25,7 @@ export default class Vue {
   _initData() {
     var self = this;
     Object.keys(this._data).forEach(key => {
+      
       Object.defineProperty(self, key, {
         get() {
           return self._data[key];

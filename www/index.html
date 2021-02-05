@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-        你好 {{ a }}
+        你好 {{ b.m.n }}
         <h3 class="title"></h3>
         <ul>
             <li>A</li>
@@ -24,7 +24,12 @@
         var vm = new Vue({
             el: "#app",
             data: {
-                a: 10
+                a: 10,
+                b: {
+                    m: {
+                        n: 5
+                    }
+                }
             },
             created() {
 

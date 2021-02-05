@@ -1,3 +1,5 @@
+import Watcher from "../响应式源码学习/Watcher";
+
 export default class Compile {
   constructor(el, vue) {
     // vue实例
@@ -11,6 +13,8 @@ export default class Compile {
 
       // 编译
       this.compile($fragment)
+      // 替换好的内容上树
+      this.$el.appendChild($fragment)
     }
   }
 
@@ -36,14 +40,14 @@ export default class Compile {
 
     childNodes.forEach(node => {
       var text = node.textContent;
-      // console.log('forEach', text);
+      // console.log('childNodes.forEach', node);
 
       var reg = /\{\{(.*)\}\}/;
       if (node.nodeType == 1) {
         self.compileElement(node)
       } else if (node.nodeType == 3 && reg.test(text)) {
         console.log('匹配到了');
-        let name = text.match(reg)[1]
+        let name = text.match(reg)[1].trim()
         self.compileText(node, name);
       }
     })
@@ -68,26 +72,30 @@ export default class Compile {
           console.log('发现了model指令');
         } else if(dir == 'if'){
           console.log('发现了if指令');
-
         }
       }
     })
   }
 
   compileText(node, name) {
-    console.log('compileText',this.$vue, name);
-    console.log('compileText', this.getVueVal(this.$vue, name));
-    node.textContent = this.getVueVal(this.$vue, name);
+    // console.log('compileText',this.$vue, name);
+    // console.log('compileText', this.getVueVal(this.$vue, name));
+    node.textContent = this.getVueVal(this.$vue, name); // 小心空格问题。
+    new Watcher(this.$vue, name, value => {
+      console.log(`监控到了${name}变化了`, value);
+      node.textContent = value;
+    });
   }
 
-  getVueVal(vue, exp) {
+  getVueVal(vue, exp) {    
     var val = vue;
     exp = exp.split('.');
+    console.log(exp);
     exp.forEach(k => {
-      console.log('getVueVal exp.forEach k', k, val[k]);
+      // console.log('getVueVal exp.forEach k', k, val);
       val = val[k]
     })
-    console.log(val);
+    // console.log('getVueVal', val);
     return val;
   }
 }
