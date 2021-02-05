@@ -10,7 +10,16 @@ export default class Dep {
 
   // 添加订阅
   addSub(sub) {
-    this.subs.push(sub);
+    // 这个简易代码会导致 Watcher 指数级增加，真实情况应该是模板中存在几个表达式，这里有几个Watcher,根据Watcher的id来添加，若已存在则不再重复添加
+    
+    // this.subs.push(sub);
+
+    // 修复BUG
+    if(!this.subs.find(m => m.id == sub.id)) {
+      console.log('添加订阅', sub);
+      this.subs.push(sub);
+    }
+
     // console.log('收集到一个订阅者：', sub.id)
   }
 
@@ -25,10 +34,10 @@ export default class Dep {
 
   // 通知更新
   notify() {
-    // console.log("我是notify");
 
     // 浅克隆一份
     const subs = this.subs.slice();
+    console.log("我是notify", subs.length);
     // 遍历
     for (let i = 0, l = subs.length; i < l; i++) {
       subs[i].update();
