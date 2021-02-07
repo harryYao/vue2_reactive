@@ -1,7 +1,7 @@
-const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 // process.env.NODE_ENV === 'development'
 
@@ -10,7 +10,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'built.js',
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
   },
   module: {
     rules: [
@@ -49,26 +49,34 @@ module.exports = {
                 ident: 'postcss',
                 plugins: [
                   // require('postcss-preset-env')()
-                  "postcss-preset-env",
-                ]
-              }
-            }
-          }
-        ]
-      }
-    ]
+                  'postcss-preset-env',
+                ],
+              },
+            },
+          },
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'eslint-loader',
+            options: {
+              fix: true,
+            },
+          },
+        ],
+      },
+    ],
   },
-  plugins: [  
+  plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
       // 对输出的文件重命名
-      filename: 'css/built.css'
+      filename: 'css/built.css',
     }),
     // 压缩css插件
-    new OptimizeCssAssetsWebpackPlugin()
+    new OptimizeCssAssetsWebpackPlugin(),
   ],
   // 模式
-  mode: 'development'
-}
+  mode: 'development',
+};
