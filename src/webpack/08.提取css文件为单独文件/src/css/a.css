@@ -1,0 +1,8 @@
+.box1 {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: beige;
+  display: flex;
+  backface-visibility: hidden;
+}
