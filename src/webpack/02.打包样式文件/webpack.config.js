@@ -24,6 +24,11 @@ module.exports = {
           // 将css文件变成commonjs模块加载到js中，里面内容是样式字符串
           'css-loader'
         ]
+      },
+      {
+        // 处理less文件需要  less 和 less-loader
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   },
