@@ -25,7 +25,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     publicPath: './',
-    filename: 'built.js',
+    filename: 'js/built.js',
     path: resolve(__dirname, 'build'),
   },
   module: {

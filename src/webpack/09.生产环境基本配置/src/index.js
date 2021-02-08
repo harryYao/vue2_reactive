@@ -2,8 +2,11 @@ import './style/iconfont.css'
 import './css/a.css';
 import './css/b.less';
 
+
+import print from './print'
+
 // eslint-disable-next-line
-console.log('测试加载css文件');
+print('ssssss');
 
 const add = (a, b) => a + b;
 
