@@ -53,4 +53,12 @@
 *      --> source-map | cheap-module-source-map
 
 
-
+### oneOf
+*  以下loader只会匹配一个, 这样文件不会被每个loader过一遍，提升性能
+*  注意，不能有两个配置处理同一类型文件
+```
+  oneOf: [
+    {},
+    {}
+  ]
+```
