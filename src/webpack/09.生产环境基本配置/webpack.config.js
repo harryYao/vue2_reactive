@@ -55,7 +55,8 @@ module.exports = {
                 }
               }
             ]
-          ]
+          ],
+          cacheDirectory: true
         }
       },
       {
