@@ -67,9 +67,10 @@ const fn5 = (data) => {
     return {...rst,  [key]: value}
   }, {})
 } 
-
+// 以上还可以简化为一行代码
 const rst = data.reduce((obj, {key, value}) => ({...obj,  [key]: value}), {});
 
+// 最简代码， 使用map的高级用法和 Object.fromEntries 函数
 const rst2 = Object.fromEntries(data.map(Object.values))
 
 // https://ramda.cn/  一款实用的 JavaScript 函数式编程库。
