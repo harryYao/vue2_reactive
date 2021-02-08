@@ -34,7 +34,23 @@
 *  
 *  内联 和 外部 的区别： 1. 外部生成了文件，内联没有， 2. 内联构建速度更快
 *  
+*  开发环境：速度快，调式更友好
+*    速度快（eval > inline > cheap> ...）
+*      eval-cheap-source-map
+*      eval-source-map
+*    调试更友好
+*      source-map
+*      cheap-module-source-map
+*      cheap-source-map
+*       
+*      --> eval-source-map | eval-cheap-module-source-map
 *  
+*  生产环境：源代码要不要隐藏？调试要不要更友好
+*    内联会让体积变大，所以在生产环境不用内联
+*    nosource-source-map   全部影藏
+*    hidden-source-map    只隐藏源代码，会提示构建后代码错误信息
+*    
+*      --> source-map | cheap-module-source-map
 
 
 
