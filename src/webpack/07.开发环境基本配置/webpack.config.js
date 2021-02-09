@@ -20,7 +20,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: ['./src/index.js', './src/index.html'],
   output: {
-    publicPath: '/',
+    publicPath: './',
     filename: 'js/built.js',
     path: resolve(__dirname, 'build')
   },
