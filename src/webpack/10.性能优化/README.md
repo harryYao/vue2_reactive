@@ -62,3 +62,25 @@
     {}
   ]
 ```
+
+
+### 懒加载 和 预加载
+```
+document.getElementById('btn').onclick= function () {
+  // 懒加载~：当文件需要使用是才加载
+  import(/* webpackChunkName: 'test' */'./test')
+    .tehn((add) => {
+      console.log(add(2,3))
+    })
+}
+
+document.getElementById('btn').onclick= function () {
+  // 预加载 prefetch：会在使用之前，提前加载js文件
+  import(/* webpackChunkName: 'test', webpackPrefetch: true */'./test')
+    .tehn((add) => {
+      console.log(add(2,3))
+    })
+}
+```
+
+* 正常加载是并行加载（同一时间加载多个文件），预加载是等其他资源加载完毕，浏览器空闲了再偷偷加载资源
