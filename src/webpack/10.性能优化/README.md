@@ -27,14 +27,16 @@ HMR: hot module replacement 热模块替换 / 热模块更新
 ### source-map
 
  一种提供源代码到构建后代码的映射的技术
+ ``` 
  "^(inline-|hidden-|eval-)?(nosources-)?(cheap-(module-)?)?source-map$"
+ ```
  
-  inline-source-map:       内联    只生成1个source-map文件
-  hidden-source-map:       外部
-  eval-source-map:         内联    每个文件都生成对应的source-map, 都在eval
-  nosource-source-map:     外部
-  cheap-source-map:        外部
-  cheap-module-source-map: 外部
+ * inline-source-map:       内联    只生成1个source-map文件
+ * hidden-source-map:       外部
+ * eval-source-map:         内联    每个文件都生成对应的source-map, 都在eval
+ * nosource-source-map:     外部
+ * cheap-source-map:        外部
+ * cheap-module-source-map: 外部
   
   内联 和 外部 的区别： 1. 外部生成了文件，内联没有， 2. 内联构建速度更快
   
