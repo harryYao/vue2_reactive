@@ -95,7 +95,7 @@ document.getElementById('btn').onclick= function () {
 
 ### PWA
 
-PWA: 渐进式网络开发应用程序（离仙可访问）  
+PWA: 渐进式网络开发应用程序（离线可访问）  
 workbox --> workbox-webpack-plugin
 ```
 new WorkboxWebpackPlugin.GenerateSW({
@@ -161,4 +161,15 @@ use: [
   },
   "expensive-loader"
 ]
+```
+---
+### externals 
+* 排除一些包进行打包，可以使用cdn方式引入  
+  
+例如：
+```
+node: 'production',
+externals: {
+  jquery: 'jQuery'
+}
 ```
