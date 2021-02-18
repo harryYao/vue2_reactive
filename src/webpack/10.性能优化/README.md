@@ -97,3 +97,68 @@ document.getElementById('btn').onclick= function () {
 
 PWA: 渐进式网络开发应用程序（离仙可访问）  
 workbox --> workbox-webpack-plugin
+```
+new WorkboxWebpackPlugin.GenerateSW({
+  /**
+    * 1. 帮助serviceworder快速启动
+    * 2. 删除旧的 serviceworker
+    * 
+    *  生成一个serviceworker 配置文件~
+    */
+  clientsClaim: true,
+  skipWaiting: true
+})
+```
+---
+
+### 多进程打包 thread-loader
+https://www.cnblogs.com/mengfangui/p/13416595.html
+
+> npm install --save-dev thread-loader
+
+把这个 loader 放置在其他 loader 之前， 放置在这个 loader 之后的 loader 就会在一个单独的 worker 池(worker pool)中运行
+
+在 worker 池(worker pool)中运行的 loader 是受到限制的。例如：  
+• 这些 loader 不能产生新的文件。  
+• 这些 loader 不能使用定制的 loader API（也就是说，通过插件）。  
+• 这些 loader 无法获取 webpack 的选项设置。  
+
+每个 worker 都是一个单独的有 600ms 限制的 node.js 进程。同时跨进程的数据交换也会被限制。
+
+请仅在耗时的 loader 上使用
+
+* 可配置选项
+```
+use: [
+  {
+    loader: "thread-loader",
+    // 有同样配置的 loader 会共享一个 worker 池(worker pool)
+    options: {
+      // 产生的 worker 的数量，默认是 cpu 的核心数
+      workers: 2,
+
+      // 一个 worker 进程中并行执行工作的数量
+      // 默认为 20
+      workerParallelJobs: 50,
+
+      // 额外的 node.js 参数
+      workerNodeArgs: ['--max-old-space-size', '1024'],
+
+      // 闲置时定时删除 worker 进程
+      // 默认为 500ms
+      // 可以设置为无穷大， 这样在监视模式(--watch)下可以保持 worker 持续存在
+      poolTimeout: 2000,
+
+      // 池(pool)分配给 worker 的工作数量
+      // 默认为 200
+      // 降低这个数值会降低总体的效率，但是会提升工作分布更均一
+      poolParallelJobs: 50,
+
+      // 池(pool)的名称
+      // 可以修改名称来创建其余选项都一样的池(pool)
+      name: "my-pool"
+    }
+  },
+  "expensive-loader"
+]
+```
