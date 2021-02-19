@@ -11,7 +11,21 @@
 
 ## 生产环境性能优化
 * 优化打包构建速度
+  * oneOf
+  * babel缓存
+  * 多进程打包
 * 优化代码运行的性能
+  * 缓存（hash-chunkhash-contenthash）
+  * tree shaking 
+  * code split （路由 import）
+  * 懒加载/预加载
+  * pwa （service worker）
+  * exyernals（排除一些包（如第三方包），可以cdn引入）
+  * dll（第三方包单独打包）
+
+
+
+
 ---
 ### HMR
 devServer.hot = true
