@@ -72,6 +72,19 @@ HMR: hot module replacement 热模块替换 / 热模块更新
 ```
 ---
 
+### tree shaking
+
+前提： 1.必须使用es6模块化 2. 开启production环境
+去除无用代码 作用减少代码体积  
+
+在package.json中配置
+> "sideEffects": false
+所有代码都没有副作用（都可以进行tree shaking）
+ 问题： 可能会吧css / @babel/polyfill 文件干掉
+ 解决： "sideEffects": ["*.css"]
+
+---
+
 ### 懒加载 和 预加载
 ```
 document.getElementById('btn').onclick= function () {
