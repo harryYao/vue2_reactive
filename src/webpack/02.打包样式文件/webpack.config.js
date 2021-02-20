@@ -8,7 +8,9 @@ module.exports = {
     filename: 'built.js',
     // 文件输出路径
     // __dirname nodejs的变量，代表当前文件的目录绝对路径
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
+    // 所有资源引入的公共路径前缀
+    publicPath: '/'
   },
   module: {
     rules: [
