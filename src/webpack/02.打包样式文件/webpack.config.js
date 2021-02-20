@@ -9,8 +9,11 @@ module.exports = {
     // 文件输出路径
     // __dirname nodejs的变量，代表当前文件的目录绝对路径
     path: resolve(__dirname, 'build'),
-    // 所有资源引入的公共路径前缀
-    publicPath: '/'
+    // 所有资源引入的公共路径前缀  --> 'imgs/a.jpg'  -->  '/imgs/a.jpg'
+    publicPath: '/',
+    // 非入口的chunk的名称
+    // chunkFileName: '[name]_chunk.js'
+
   },
   module: {
     rules: [
