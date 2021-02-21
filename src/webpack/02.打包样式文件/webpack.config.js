@@ -13,6 +13,9 @@ module.exports = {
     publicPath: '/',
     // 非入口的chunk的名称
     // chunkFileName: '[name]_chunk.js'
+    // library: '[name]', // 整个库向外暴露的变量名
+    // libraryTarget: 'window', // 变量名添加到哪个对象上  browser: window,  node:global
+    
 
   },
   module: {
