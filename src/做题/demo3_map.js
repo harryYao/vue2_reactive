@@ -3,6 +3,8 @@
 // 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
 // 你可以按任意顺序返回答案。
 
+const { map } = require("jquery");
+
 // 示例 1：
 // 输入：nums = [2,7,11,15], target = 9
 // 输出：[0,1]
@@ -23,7 +25,18 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-
+  
+  const myMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const element = nums[i];
+    myMap.set(element, i)
+    if (i > 0) {
+      if (myMap.has(target - element)) {
+        return [ myMap.get(target - element), i]
+      }
+    }
+  }
+  return []
 };
 
 // 先建立一个map结构，利用map能很方便建立值和坐标的映射。
