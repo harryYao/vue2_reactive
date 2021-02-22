@@ -29,11 +29,10 @@ var twoSum = function(nums, target) {
   const myMap = new Map();
   for (let i = 0; i < nums.length; i++) {
     const element = nums[i];
-    myMap.set(element, i)
-    if (i > 0) {
-      if (myMap.has(target - element)) {
-        return [ myMap.get(target - element), i]
-      }
+    if (myMap.has(target - element)) {
+      return [ myMap.get(target - element), i]
+    }else{
+      myMap.set(element, i)
     }
   }
   return []
