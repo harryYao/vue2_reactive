@@ -27,5 +27,19 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-
+  let i = 0;
+  let end = 1;
+  let strLength = 0
+  const hasSameChar = (ss) => {
+    return new Set(ss).size !== ss.length;
+  }
+  while (end <= s.length) {
+    if (hasSameChar(s.slice(i, end))) {
+      i++
+    } else {
+      strLength = end - i > strLength ? end - i: strLength ;
+      end++;
+    }
+  }
+  return strLength;
 }

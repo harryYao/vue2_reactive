@@ -12,4 +12,11 @@ var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 
 
 
 Array.from(new Set(arr.flat(Infinity))).sort((a,b)=>{ return a-b})
+
+// 这个没有去重
 arr.toString().split(",").sort((a,b)=>{ return a-b})
+
+function flat(arr) {
+  return Array.from(new Set(arr.toString().split(','))).sort((a,b) => { return a -b} )
+}
+  
