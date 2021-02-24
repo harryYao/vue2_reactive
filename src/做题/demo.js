@@ -88,3 +88,15 @@ sumOfMinimums(test)
 function fourSeven(n){
   return { 7 : 4, 4 : 7 }[n] || 0
 }
+
+
+// 用最精炼的代码实现数组非零非负最小值 index
+// 例如：[10,21,0,-7,35,7,9,23,18] 输出 5, 7 最小
+function getIndex(arr){
+  // todo
+  // method1 过滤找到最小，再算indexof
+  // return arr.indexOf(Math.min(...arr.filter(n => n > 0)))
+
+  // method2 reduce方法
+  return arr.reduce((num, v, i) => v > 0 && v < arr[num] ? i: num, 0)
+}
