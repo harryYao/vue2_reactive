@@ -19,7 +19,20 @@
  * @return {boolean}
  */
 var checkInclusion = function(s1, s2) {
-
+  let i = 0;
+  let end = s1.length;
+  let sub = '';
+  let s1_d = [...s1].reverse().join('');
+  while (end <= s2.length) {
+    sub = s2.slice(i, end);
+    if (sub == s1 || sub == s1_d) {
+      return true;
+    } else {
+      i++;
+      end++;
+    }
+  }
+  return false;
 };
 
 checkInclusion('ab','eidbaooo') // --> true
