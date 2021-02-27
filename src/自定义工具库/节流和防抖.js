@@ -25,4 +25,19 @@ function throttle(fn) {
     }, 500)
   }
 }
+
+function throttle2(callback, wait) {
+  let start = 0;
+  return function(e) {
+    let now = Date.now();
+    if (now - start >= wait) {
+      callback.call(this, e);
+      start = now;
+    }
+  }
+}
 // 一般会在滚动，滑动等事件中使用
+// 窗口调整 resize
+// 页面滚动 scroll
+// DOM元素拖拽 mousemove
+// 抢购按钮疯狂点击 click
