@@ -5,9 +5,13 @@
 function debounce(fn) {
   let timeout = null;
   return function () {
-    clearTimeout(timeout);
-    timeout = setInterval(() => {
+    if (timeout !== null) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
       fn.apply(this, arguments);
+      // 重置下定时器
+      timeout = null;
     }, 500)
   }
 }
