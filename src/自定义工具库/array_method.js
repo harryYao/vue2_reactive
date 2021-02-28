@@ -50,3 +50,16 @@ function find(arr, callback) {
 }
 
 const result3 = find(arr, item => item > 2);
+
+
+function findIndex(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    let res = callback(arr[i], i)
+    if (res) {
+      return i
+    }
+  }
+  return -1;
+}
+
+const result4 = findIndex(arr, item => item > 2);
