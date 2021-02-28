@@ -13,3 +13,16 @@ const result = map(arr, (item) => {
 })
 
 console.log(result);
+
+
+function reduce(arr, callback, initVal) {
+  let result = initVal;
+  for (let i = 0; i < arr.length; i++) {
+    result = callback(result, arr[i])
+  }
+  return result;
+}
+
+const result1 = reduce(arr, function(res, value) {
+  return res + value
+}, 0)
