@@ -63,3 +63,24 @@ function findIndex(arr, callback) {
 }
 
 const result4 = findIndex(arr, item => item > 2);
+
+
+function every(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (!callback(arr[i], i)) {
+      return false;
+    }
+  }
+  return true;
+}
+const result5 = every(arr, item => item > 0);
+
+function some(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i)) {
+      return true;
+    }
+  }
+  return false;
+}
+const result6 = some(arr, item => item > 3);
