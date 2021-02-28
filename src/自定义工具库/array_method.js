@@ -84,3 +84,39 @@ function some(arr, callback) {
   return false;
 }
 const result6 = some(arr, item => item > 3);
+
+
+/**
+ * 数组去重
+ */
+function unique(arr) {
+  const result = [];
+  arr.forEach(item => {
+    if (result.indexOf(item) === - 1) {
+      result.push(item);
+    }
+  })
+  return result;
+}
+
+function unique2(arr) {
+  const result = [];
+  const obj = {};
+  arr.forEach(item => {
+    if (obj[item] === undefined) {
+      obj[item] = true;  
+      result.push(item);
+    }
+  })
+  return result;
+}
+
+const array1 = [1,2,3,1,2,5]
+console.log(unique(array1));
+console.log(unique2(array1));
+
+// ES6的Set对象 更加方便去重
+function unique3(arr) {
+  return [...new Set(arr)]
+}
+console.log(unique3(array1));
