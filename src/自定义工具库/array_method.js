@@ -120,3 +120,17 @@ function unique3(arr) {
   return [...new Set(arr)]
 }
 console.log(unique3(array1));
+
+function concat(arr, ...args) {
+  const result = [...arr];
+  args.forEach(item => {
+    if(Array.isArray(item)) {
+      result.push(...item);
+    } else {
+      result.push(item)
+    }
+  })
+  return result;
+}
+
+console.log(concat(arr, [5,6,7], 8, 9));
