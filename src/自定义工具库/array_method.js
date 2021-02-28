@@ -26,3 +26,27 @@ function reduce(arr, callback, initVal) {
 const result1 = reduce(arr, function(res, value) {
   return res + value
 }, 0)
+
+
+function filter(arr, callback) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let res = callback(arr[i], i)
+    res && result.push(arr[i])
+  }
+  return result;
+}
+const result2 = filter(arr, item => item % 2 === 0);
+
+
+function find(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    let res = callback(arr[i], i)
+    if (res) {
+      return arr[i]
+    }
+  }
+  return undefined;
+}
+
+const result3 = find(arr, item => item > 2);
