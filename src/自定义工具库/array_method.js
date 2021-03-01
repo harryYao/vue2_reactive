@@ -161,6 +161,8 @@ console.log(slice(arrslice, 2, 5));
 
 /**
  * 数组的扁平化
+ * ES6 原生数组的flat函数还有一个层级的参数[depth]，这里没有实现
+ * var newArray = arr.flat([depth]);
  */
 function flat(arr) {
   let result = [];
