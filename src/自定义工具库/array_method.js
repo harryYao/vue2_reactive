@@ -134,3 +134,27 @@ function concat(arr, ...args) {
 }
 
 console.log(concat(arr, [5,6,7], 8, 9));
+
+function slice(arr, start, end) {
+  if (arr.length === 0) return [];
+
+  start = start || 0;
+  if (start >= arr.length) {
+    return []
+  }
+
+  end = end || arr.length;
+  if (end < start) {
+    end = arr.length;
+  }
+
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i >= start && i < end) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
+const arrslice = [1,3,5,7,9,11,13,15];
+console.log(slice(arrslice, 2, 5));
