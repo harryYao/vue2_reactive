@@ -158,3 +158,21 @@ function slice(arr, start, end) {
 }
 const arrslice = [1,3,5,7,9,11,13,15];
 console.log(slice(arrslice, 2, 5));
+
+/**
+ * 数组的扁平化
+ */
+function flat(arr) {
+  let result = [];
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    if (Array.isArray(element)) {
+      result = result.concat(flat(element))
+    } else {
+      result.push(element)
+    }
+  }
+  return result;
+}
+const arrflat = [1,3,[5,[7,9]],11,13,15];
+console.log(flat(arrflat));
