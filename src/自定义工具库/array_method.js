@@ -1,3 +1,5 @@
+const { template } = require("babel-core");
+
 function map(arr, callback){
   let result = [];
   for (let i = 0; i < arr.length; i++) {
@@ -190,3 +192,25 @@ function flat2(arr) {
     result = [].concat(...result);
   }
 }
+
+/**
+ * 数组分块
+ */
+function chunk(arr, size = 1) {
+  let result = [];
+  let tmp = []; {
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      if (tmp.length === 0) {
+        result.push(tmp)
+      } 
+      tmp.push(element);
+      if (tmp.length === size){
+        tmp = [];
+      }
+    }
+  }
+  return result;
+}
+const arrchunk = [1,3,5,7,9,11,13,15];
+console.log(chunk(arrchunk));
