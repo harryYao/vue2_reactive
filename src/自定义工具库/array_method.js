@@ -178,3 +178,15 @@ function flat(arr) {
 }
 const arrflat = [1,3,[5,[7,9]],11,13,15];
 console.log(flat(arrflat));
+
+/**
+ * Flat2
+ * 使用some 和 concat 来实现
+ */
+function flat2(arr) {
+  let result = [...arr];
+  // 使用 concat 的一个特性，合并数组或添加元素，它接受多个参数
+  while (result.some(item => Array.isArray(item))) {
+    result = [].concat(...result);
+  }
+}
