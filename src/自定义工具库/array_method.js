@@ -214,3 +214,28 @@ function chunk(arr, size = 1) {
 }
 const arrchunk = [1,3,5,7,9,11,13,15];
 console.log(chunk(arrchunk));
+
+
+// 语法: difference(arr1, arr2)
+// 功能: 得到当前数组中所有不在arr中的元素组成的数组(不改变原数组)
+// 例子: difference([1,3,5,7], [5, 8]) ==> [1, 3, 7]
+function difference(arr1, arr2) {
+  const result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    const element = arr1[i];
+    if (arr2.indexOf(arr1[i]) === -1) {
+      result.push(arr1[i])
+    }
+  }
+  return result;
+}
+console.log(difference([1,3,5,7], [5, 8]));
+
+function difference2(arr1, arr2 = []) {
+  if(arr1.length === 0) return [];
+  if(arr2.length === 0) return arr1;
+
+  // return arr1.filter(item => arr2.indexOf(item) === -1)
+  return arr1.filter(item => !arr2.includes(item))
+}
+console.log(difference2([1,3,5,7], [5, 8]));
