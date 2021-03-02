@@ -20,5 +20,28 @@ function Person(name, age) {
 }
 
 let obj = newInstance(Person, '张三', 20);
-
 console.log(obj);
+
+function myInstance(obj, Fn) {
+  // 获取函数的显式原型
+  let prototype = Fn.prototype;
+  // 获取obj的隐式原型对象
+  let proto = obj.__proto__;
+  // 遍历原型链
+  while (proto) {
+    console.log('proto', proto);
+    // 检测原型对象是否相等
+    if (prototype === proto) {
+      return true;
+    }
+    // 如果不等于
+    proto = proto.__proto__;
+  }
+  return false;
+}
+const p = new Person('AA', 22);
+console.log(myInstance(p, Person)); // true
+console.log(myInstance(p, Object)); // true
+console.log(myInstance(Person, Object)); // true
+console.log(myInstance(Person, Function)); // true
+console.log(myInstance(p, Function)); // false
