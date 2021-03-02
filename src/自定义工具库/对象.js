@@ -22,6 +22,7 @@ function Person(name, age) {
 let obj = newInstance(Person, '张三', 20);
 console.log(obj);
 
+// 自定义检测类型
 function myInstance(obj, Fn) {
   // 获取函数的显式原型
   let prototype = Fn.prototype;
@@ -45,3 +46,35 @@ console.log(myInstance(p, Object)); // true
 console.log(myInstance(Person, Object)); // true
 console.log(myInstance(Person, Function)); // true
 console.log(myInstance(p, Function)); // false
+
+
+// 合并对象  属性替换
+function mergeObject(obj1, obj2) {
+  return {...obj1, ...obj2}
+}
+const obj1 = {
+  a: [{x: 1}, {y : 2}],
+  b: 1
+}
+const obj2 = {
+  a: { r: 3 },
+  b: [2, 5],
+  c: 'ddaa'
+}
+
+console.log(mergeObject(obj1, obj2));
+
+// 合并对象  属性也合并
+function mergeObjs(...objs) {
+  const result = {};
+  objs.forEach(item => {
+    Object.keys(item).forEach(key => {
+      if (result.hasOwnProperty(key)) {
+        result[key] = [].concat(result[key], item[key])
+      } else {
+        result[key] = item[key]
+      }
+    })
+  })
+  return result;
+}
