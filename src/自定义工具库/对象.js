@@ -10,8 +10,8 @@ function newInstance(Fn, ...args) {
   const result = Fn.call(obj, ...args);
   // 3. 修改新对象的原型对象
   obj.__proto__ = Fn.prototype;
-  // 4. 返回新对象
-  return obj;
+  // 4. 返回一个对象,如果构造函数本身返回的是一个对象,那么就返回这个对象,如果不是就返回这个实例对象
+  return result instanceof Object ? result: obj;
 }
 
 function Person(name, age) {
