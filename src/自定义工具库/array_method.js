@@ -282,3 +282,39 @@ function pullAll(arr, values) {
 const arrpull2 = [1,3,5,3,7,2,6,8]
 console.log(pullAll(arrpull2, [2, 7, 3, 7]));
 console.log(arrpull2);
+
+
+
+// drop(array, count)
+// 得到当前数组过滤掉左边count个后剩余元素组成的数组
+// 说明: 不改变当前数组, count默认是1
+// 如: drop([1,3,5,7], 2) ===> [5, 7]
+function drop(arr, count) {
+  if (arr.length === 0 || arr.length <= count) return [];
+  if (count <= 0) return arr;
+  return arr.slice(count)
+}
+function drop2(arr, count) {
+  return arr.filter((item, index) => index >= count)
+}
+// slice方法可以传负数，所以需要判断
+// 所以filter方法比较简单，下同
+
+const arr_drop = [1,2,3,4,5,7]
+console.log(drop(arr_drop, 2));
+
+// dropRight(array, count)
+// 得到当前数组过滤掉右边count个后剩余元素组成的数组
+// 说明: 不改变当前数组, count默认是1
+// 如: dropRight([1,3,5,7], 2) ===> [1, 3]
+
+function dropRight(arr, count) {
+  if (arr.length === 0 || arr.length <= count) return [];
+  if (count <= 0) return arr;
+  return arr.slice(0, arr.length - count)
+}
+function dropRight2(arr, count) {
+  return arr.filter((item, index) => index < (arr.length - count))
+}
+const arr_drop_right = [1,2,3,4,5,7]
+console.log(dropRight(arr_drop_right, 2));
