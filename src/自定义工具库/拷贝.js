@@ -117,3 +117,36 @@ n1.b.push(n1.c);
 n1.c.f = n1.b;
 
 const n2 = deepClone3(n1); 
+console.log(n2);
+
+/**
+ * 优化遍历性能
+ * @param {*} target 
+ * @param {*} map 
+ */
+function deepClone4 (target, map = new Map()) {
+  if (target!==null && typeof target==='object') {
+    // 从缓存容器中读取克隆对象
+    let cloneTarget = map.get(target)
+    // 如果存在, 返回前面缓存的克隆对象
+    if (cloneTarget) {
+      return cloneTarget
+    }
+
+    if (Array.isArray(target)) {
+      cloneTarget = [];
+      map.set(target, cloneTarget)
+      target.forEach((item, index) => {
+        cloneTarget[index] = deepClone4(item, map);
+      })
+    } else {
+      cloneTarget = {};
+      map.set(target, cloneTarget);
+      Object.keys(target).forEach(key => {
+        cloneTarget[key] = deepClone4(target[key], map);
+      })
+    }
+    return cloneTarget
+  }
+  return target
+}
