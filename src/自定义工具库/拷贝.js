@@ -51,8 +51,45 @@ const m1 = {
   }
 }
 // 循环引用会出错
+// m1.b.push(m1.c);
+// m1.c.f = m1.b;
 // Uncaught TypeError: Converting circular structure to JSON
-m1.b.push(m1.c);
-m1.c.f = m1.b;
 
 const m2 = deepClone1(m1); 
+
+/**
+ * 递归深拷贝
+ * 解决的function属性丢失问题，但是循环引用还是没有解决
+ * @param {*} target 
+ */
+function deepClone2(target) {
+  if (typeof target === 'object' && target != null) {
+    // 创建容器
+    const result = Array.isArray(target)? [] : {};
+    // 遍历 target 数据
+    // for (const key in target) {
+    //   if (Object.hasOwnProperty.call(target, key)) {
+    //     result[key] = deepClone2(target[key]);
+    //   }
+    // }
+    Object.keys(target).forEach(key => {
+      result[key] = deepClone2(target[key]);
+    })
+    return result;
+  } 
+  return target;
+}
+const m3 = deepClone2(m1); 
+
+// function deepClone3(target) {
+//   if (typeof target === 'object' && target != null) {
+//     // 创建容器
+//     const result = Array.isArray(target)? [] : {};
+//     // 遍历 target 数据
+//     Object.keys(target).forEach(key => {
+//       result[key] = deepClone2(target[key]);
+//     })
+//     return result;
+//   } 
+//   return target;
+// }
