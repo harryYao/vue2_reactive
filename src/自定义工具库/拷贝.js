@@ -32,3 +32,27 @@ result.y.m = 2;
 console.log(result);
 console.log(obj); //obj.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
 
+
+/**
+ * 乞丐版深拷贝 
+ * 问题1: 函数属性会丢失
+ * 问题2: 循环引用会出错
+ * @param {*} target 
+ */
+function deepClone1(target) {
+  const str = JSON.stringify(target);
+  return JSON.parse(str);
+}
+const m1 = {
+  a: 1, b: ['a'], c: { d: 20 }, 
+  // JSON 不能clone方法
+  d: () => {
+    console.log('function');
+  }
+}
+// 循环引用会出错
+// Uncaught TypeError: Converting circular structure to JSON
+m1.b.push(m1.c);
+m1.c.f = m1.b;
+
+const m2 = deepClone1(m1); 
