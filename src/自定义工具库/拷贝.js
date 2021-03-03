@@ -81,15 +81,39 @@ function deepClone2(target) {
 }
 const m3 = deepClone2(m1); 
 
-// function deepClone3(target) {
-//   if (typeof target === 'object' && target != null) {
-//     // 创建容器
-//     const result = Array.isArray(target)? [] : {};
-//     // 遍历 target 数据
-//     Object.keys(target).forEach(key => {
-//       result[key] = deepClone2(target[key]);
-//     })
-//     return result;
-//   } 
-//   return target;
-// }
+/**
+ * 递归深拷贝2
+ * 解决属性循环引用的问题
+ * @param {*} target 
+ * @param {*} map 内置一个容器
+ */
+function deepClone3(target, map = new Map()) {
+  if (typeof target === 'object' && target != null) {
+    // 创建容器
+    const result = Array.isArray(target)? [] : {};
+    map.set(target, result);
+    // 遍历 target 数据
+    Object.keys(target).forEach(key => {
+      if (map.get(target[key])) {
+        result[key] = target[key];
+      } else {
+        result[key] = deepClone3(target[key], map);
+      }
+    })
+    return result;
+  } 
+  return target;
+}
+
+const n1 = {
+  a: 1, b: ['a', 'b'], c: { d: 20 }, 
+  // JSON 不能clone方法
+  d: () => {
+    console.log('function');
+  }
+}
+// 循环引用不再出错
+n1.b.push(n1.c);
+n1.c.f = n1.b;
+
+const n2 = deepClone3(n1); 
