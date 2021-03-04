@@ -24,24 +24,41 @@
       console.log(resson);
     });
 
-    // axios.get('http://127.0.0.1', {
-    //   a: 100,
-    //   b: 200
-    // }).then(res => {
-    //   console.log(res);
-    // })
-    // axios.put('http://127.0.0.1', {
-    //   a: 100,
-    //   b: 200
-    // }).then(res => {
-    //   console.log(res);
-    // })
-    // axios.delete('http://127.0.0.1', {
-    //   a: 100,
-    //   b: 200
-    // }).then(res => {
-    //   console.log(res);
-    // })
+    axios.get('http://poetry.apiopen.top/sentences', {
+      params : {
+        a: 100,
+        b: 200
+      }
+    }).then(res => {
+      console.log(res);
+    })
+    axios.post('http://poetry.apiopen.top/sentences', {
+      params : {
+        a: 100,
+        b: 200
+      },
+      data: {
+        c: 300, d: 400
+      }
+    }).then(res => {
+      console.log(res);
+    })
+    axios.put('http://poetry.apiopen.top/sentences', {
+      params : {
+        a: 100,
+        b: 200
+      }
+    }).then(res => {
+      console.log(res);
+    })
+    axios.delete('http://poetry.apiopen.top/sentences', {
+      params : {
+        a: 100,
+        b: 200
+      }
+    }).then(res => {
+      console.log(res);
+    })
     </script>
 </body>
 </html>
