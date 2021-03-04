@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>消息订阅与发布</title>
+  <script src="./index.js"></script>
+</head>
+<body>
+  <script>
+
+    let pid = PubSub.subscribe('pay', data => {
+      console.log('商家接到了订单，准备开始制作');
+    })
+
+    PubSub.subscribe('pay', data => {
+      console.log('骑手接到了订单，准备开始去取餐');
+    })
+
+    PubSub.subscribe('cancel', data => {
+      console.log('商家接到了用户取消订单的请求');
+    })
+
+    PubSub.unsubscribe(pid);
+
+    console.log(PubSub);
+    PubSub.publish('pay', {
+      title: '蛋炒饭',
+      price: 30,
+      pos: '前门大街200号'
+    })
+
+  </script>
+</body>
+</html>
