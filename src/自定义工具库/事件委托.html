@@ -18,6 +18,7 @@
   </div>
 
   <script>
+    // 自定义事件委托
     function addEventListener(el, type, fn, selector) {
       if (typeof el === 'string') {
         el = document.querySelector(el);
@@ -30,7 +31,7 @@
         el.addEventListener(type, function(e) {
           const target = e.target;
           console.log(target);
-          // matches 这个还需要在看看
+          // 与选择器是否匹配 matches 
           if (target.matches(selector)) {
             fn.call(target, e);
           }
