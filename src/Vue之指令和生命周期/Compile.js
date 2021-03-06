@@ -73,8 +73,16 @@ export default class Compile {
           console.log('发现了model指令');
 
           // 《BUG》 这里双向绑定还是存在问题的， Watcher函数的get()方法被指数级调用！！
-          // 尚未解决，正在排查中 
+          // 尚未解决，正在排查中 。。。
+
           // 已解决
+          // 在 Class DEP 中的addSub函数  
+          // 修复BUG
+          // if(!this.subs.find(m => m.id == sub.id)) {
+          //   console.log('添加订阅', sub);
+          //   this.subs.push(sub);
+          // }
+          // // 要利用下构造函数定义的id, 订阅已经存在，无需重复添加。老师这里漏了。
 
           new Watcher(self.$vue, value, tt => {
             console.log(`compileElement ==> 监控到了${value}变化了`, value);
