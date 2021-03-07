@@ -1,4 +1,4 @@
-function axios( {method, url, params, data} ) {
+export function axios( {method, url, params, data} ) {
   method = method.toUpperCase();
 
   return new Promise((resolve, reject) => {

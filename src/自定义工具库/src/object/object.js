@@ -3,7 +3,7 @@
  * @param {*} Fn 
  * @param  {...any} args 
  */
-function newInstance(Fn, ...args) {
+export function newInstance(Fn, ...args) {
   // 1. 创建一个新的对象
   const obj = {};
   // 2. 修改函数内部 this 指向新对象并执行
@@ -23,7 +23,7 @@ let obj = newInstance(Person, '张三', 20);
 console.log(obj);
 
 // 自定义检测类型
-function myInstance(obj, Fn) {
+export function myInstance(obj, Fn) {
   // 获取函数的显式原型
   let prototype = Fn.prototype;
   // 获取obj的隐式原型对象
@@ -49,7 +49,7 @@ console.log(myInstance(p, Function)); // false
 
 
 // 合并对象  属性替换
-function mergeObject(obj1, obj2) {
+export function mergeObject(obj1, obj2) {
   return {...obj1, ...obj2}
 }
 const obj1 = {
@@ -65,7 +65,7 @@ const obj2 = {
 console.log(mergeObject(obj1, obj2));
 
 // 合并对象  属性也合并
-function mergeObjs(...objs) {
+export function mergeObjs(...objs) {
   const result = {};
   objs.forEach(item => {
     Object.keys(item).forEach(key => {

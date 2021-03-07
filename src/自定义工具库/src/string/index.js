@@ -2,7 +2,7 @@
  * 字符串反转
  * @param { * } str 
  */
-function reverseString(str) {
+export function reverseString(str) {
   // 字符串转为数组
   // let arr = str.split('');
   let arr = [...str];
@@ -13,7 +13,7 @@ function reverseString(str) {
  * 字符串是否回文
  * @param {*} str 
  */
-function palindrome(str) {
+export function palindrome(str) {
   return reverseString(str) === str;
 }
 
@@ -22,6 +22,6 @@ function palindrome(str) {
  * @param {*} str 
  * @param {*} size 
  */
-function truncate(str, size) {
+export function truncate(str, size) {
   return str.slice(0, size) + '...'
 }

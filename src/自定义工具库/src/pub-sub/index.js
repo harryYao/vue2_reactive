@@ -1,5 +1,5 @@
 
-const PubSub = {
+export const PubSub = {
   // 订阅的唯一ID
   id: 1,
   // 频道与回调保存容器

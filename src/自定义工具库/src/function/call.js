@@ -1,4 +1,4 @@
-function call (fn, obj, ...args) {
+export function call (fn, obj, ...args) {
   if (obj === undefined || obj === null) {
     obj = globalThis; // 全局对象
   }

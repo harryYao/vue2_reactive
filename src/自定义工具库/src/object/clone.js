@@ -1,5 +1,5 @@
 // 浅拷贝  es6 扩展运算符
-function clone1(target) {
+export function clone1(target) {
   if (typeof target === 'object' && target != null) {
     if (Array.isArray(target)) {
       return [ ...target ];
@@ -11,7 +11,7 @@ function clone1(target) {
 }
 
 // 浅拷贝  基于es5
-function clone2(target) {
+export function clone2(target) {
   if (typeof target === 'object' && target != null) {
     // 创建容器
     const result = Array.isArray(target)? [] : {};
@@ -39,7 +39,7 @@ console.log(obj); //obj.y.m = 2， 浅拷贝时，原对象的引用属性值也
  * 问题2: 循环引用会出错
  * @param {*} target 
  */
-function deepClone1(target) {
+export function deepClone1(target) {
   const str = JSON.stringify(target);
   return JSON.parse(str);
 }
@@ -62,7 +62,7 @@ const m2 = deepClone1(m1);
  * 解决的function属性丢失问题，但是循环引用还是没有解决
  * @param {*} target 
  */
-function deepClone2(target) {
+ export function deepClone2(target) {
   if (typeof target === 'object' && target != null) {
     // 创建容器
     const result = Array.isArray(target)? [] : {};
@@ -87,7 +87,7 @@ const m3 = deepClone2(m1);
  * @param {*} target 
  * @param {*} map 内置一个容器
  */
-function deepClone3(target, map = new Map()) {
+export function deepClone3(target, map = new Map()) {
   if (typeof target === 'object' && target != null) {
     // 创建容器
     const result = Array.isArray(target)? [] : {};
@@ -124,7 +124,7 @@ console.log(n2);
  * @param {*} target 
  * @param {*} map 
  */
-function deepClone4 (target, map = new Map()) {
+export function deepClone4 (target, map = new Map()) {
   if (target!==null && typeof target==='object') {
     // 从缓存容器中读取克隆对象
     let cloneTarget = map.get(target)

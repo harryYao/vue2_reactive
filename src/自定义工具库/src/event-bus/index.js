@@ -1,4 +1,4 @@
-const eventBus = {
+export const eventBus = {
   // 保存类型和回调的容器
   callbacks: {}
 };

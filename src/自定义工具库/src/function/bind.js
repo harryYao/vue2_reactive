@@ -8,7 +8,7 @@ function call (fn, obj, ...args) {
   return result
 }
 
-function bind (fn, obj, ...args) {
+export function bind (fn, obj, ...args) {
   // 返回一个新函数，调用fn，并改变this指向
   return function(...args2) {
     // 执行 call 函数

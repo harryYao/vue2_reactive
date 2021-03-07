@@ -1,4 +1,4 @@
-function apply(fn, obj, args) {
+export function apply(fn, obj, args) {
   if (obj === undefined || obj === null) {
     obj = globalThis; // 全局对象
   }

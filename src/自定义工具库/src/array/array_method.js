@@ -41,7 +41,7 @@ export function filter(arr, callback) {
 const result2 = filter(arr, item => item % 2 === 0);
 
 
-function find(arr, callback) {
+export function find(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     let res = callback(arr[i], i)
     if (res) {
@@ -54,7 +54,7 @@ function find(arr, callback) {
 const result3 = find(arr, item => item > 2);
 
 
-function findIndex(arr, callback) {
+export function findIndex(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     let res = callback(arr[i], i)
     if (res) {
@@ -67,7 +67,7 @@ function findIndex(arr, callback) {
 const result4 = findIndex(arr, item => item > 2);
 
 
-function every(arr, callback) {
+export function every(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     if (!callback(arr[i], i)) {
       return false;
@@ -77,7 +77,7 @@ function every(arr, callback) {
 }
 const result5 = every(arr, item => item > 0);
 
-function some(arr, callback) {
+export function some(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i], i)) {
       return true;
@@ -91,7 +91,7 @@ const result6 = some(arr, item => item > 3);
 /**
  * 数组去重
  */
-function unique(arr) {
+export function unique(arr) {
   const result = [];
   arr.forEach(item => {
     if (result.indexOf(item) === - 1) {
@@ -101,7 +101,7 @@ function unique(arr) {
   return result;
 }
 
-function unique2(arr) {
+export function unique2(arr) {
   const result = [];
   const obj = {};
   arr.forEach(item => {
@@ -118,7 +118,7 @@ console.log(unique(array1));
 console.log(unique2(array1));
 
 // ES6的Set对象 更加方便去重
-function unique3(arr) {
+export function unique3(arr) {
   return [...new Set(arr)]
 }
 console.log(unique3(array1));
@@ -137,7 +137,7 @@ function concat(arr, ...args) {
 
 console.log(concat(arr, [5,6,7], 8, 9));
 
-function slice(arr, start, end) {
+export function slice(arr, start, end) {
   if (arr.length === 0) return [];
 
   start = start || 0;
@@ -166,7 +166,7 @@ console.log(slice(arrslice, 2, 5));
  * ES6 原生数组的flat函数还有一个层级的参数[depth]，这里没有实现
  * var newArray = arr.flat([depth]);
  */
-function flat(arr) {
+ export function flat(arr) {
   let result = [];
   for (let index = 0; index < arr.length; index++) {
     const element = arr[index];
@@ -185,7 +185,7 @@ console.log(flat(arrflat));
  * Flat2
  * 使用some 和 concat 来实现
  */
-function flat2(arr) {
+export function flat2(arr) {
   let result = [...arr];
   // 使用 concat 的一个特性，合并数组或添加元素，它接受多个参数
   while (result.some(item => Array.isArray(item))) {
@@ -196,7 +196,7 @@ function flat2(arr) {
 /**
  * 数组分块
  */
-function chunk(arr, size = 1) {
+export function chunk(arr, size = 1) {
   let result = [];
   let tmp = []; {
     for (let i = 0; i < arr.length; i++) {
@@ -219,7 +219,7 @@ console.log(chunk(arrchunk));
 // 语法: difference(arr1, arr2)
 // 功能: 得到当前数组中所有不在arr中的元素组成的数组(不改变原数组)
 // 例子: difference([1,3,5,7], [5, 8]) ==> [1, 3, 7]
-function difference(arr1, arr2) {
+export function difference(arr1, arr2) {
   const result = [];
   for (let i = 0; i < arr1.length; i++) {
     const element = arr1[i];
@@ -231,7 +231,7 @@ function difference(arr1, arr2) {
 }
 console.log(difference([1,3,5,7], [5, 8]));
 
-function difference2(arr1, arr2 = []) {
+export function difference2(arr1, arr2 = []) {
   if(arr1.length === 0) return [];
   if(arr2.length === 0) return arr1;
 
@@ -247,7 +247,7 @@ console.log(difference2([1,3,5,7], [5, 8]));
 // 说明: 原数组发生了改变
 // 如: pull([1,3,5,3,7], 2, 7, 3, 7) ===> 原数组变为[1, 5], 返回值为[3,3,7]
 
-function pull(arr, ...values) {
+export function pull(arr, ...values) {
   // 这个没有删除
   // return arr.filter(item => ![...values].includes(item))
 
@@ -268,7 +268,7 @@ console.log(arrpull);
 // pullAll(array, values):
 // 功能与pull一致, 只是参数变为数组
 // 如: pullAll([1,3,5,3,7], [2, 7, 3, 7]) ===> 数组1变为[1, 5], 返回值为[3,3,7]
-function pullAll(arr, values) {
+export function pullAll(arr, values) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (values.includes(arr[i])) {
