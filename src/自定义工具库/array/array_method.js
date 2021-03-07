@@ -1,6 +1,6 @@
 const { template } = require("babel-core");
 
-function map(arr, callback){
+export function map(arr, callback){
   let result = [];
   for (let i = 0; i < arr.length; i++) {
       result.push(callback(arr[i], i))
@@ -17,7 +17,7 @@ const result = map(arr, (item) => {
 console.log(result);
 
 
-function reduce(arr, callback, initVal) {
+export function reduce(arr, callback, initVal) {
   let result = initVal;
   for (let i = 0; i < arr.length; i++) {
     result = callback(result, arr[i])
@@ -30,7 +30,7 @@ const result1 = reduce(arr, function(res, value) {
 }, 0)
 
 
-function filter(arr, callback) {
+export function filter(arr, callback) {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
     let res = callback(arr[i], i)
