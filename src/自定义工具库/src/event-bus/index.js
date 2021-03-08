@@ -1,4 +1,4 @@
-export const eventBus = {
+const eventBus = {
   // 保存类型和回调的容器
   callbacks: {}
 };
@@ -29,3 +29,5 @@ eventBus.off = function(type) {
     this.callbacks = {}
   }
 }
+
+export default eventBus;

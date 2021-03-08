@@ -123,7 +123,7 @@ export function unique3(arr) {
 }
 console.log(unique3(array1));
 
-function concat(arr, ...args) {
+export function concat(arr, ...args) {
   const result = [...arr];
   args.forEach(item => {
     if(Array.isArray(item)) {
@@ -289,7 +289,7 @@ console.log(arrpull2);
 // 得到当前数组过滤掉左边count个后剩余元素组成的数组
 // 说明: 不改变当前数组, count默认是1
 // 如: drop([1,3,5,7], 2) ===> [5, 7]
-function drop(arr, count) {
+export function drop(arr, count) {
   if (arr.length === 0 || arr.length <= count) return [];
   if (count <= 0) return arr;
   return arr.slice(count)
@@ -308,12 +308,13 @@ console.log(drop(arr_drop, 2));
 // 说明: 不改变当前数组, count默认是1
 // 如: dropRight([1,3,5,7], 2) ===> [1, 3]
 
-function dropRight(arr, count) {
+export function dropRight(arr, count) {
   if (arr.length === 0 || arr.length <= count) return [];
   if (count <= 0) return arr;
   return arr.slice(0, arr.length - count)
 }
-function dropRight2(arr, count) {
+
+export function dropRight2(arr, count) {
   return arr.filter((item, index) => index < (arr.length - count))
 }
 const arr_drop_right = [1,2,3,4,5,7]

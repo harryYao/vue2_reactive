@@ -1,5 +1,5 @@
 
-export const PubSub = {
+const PubSub = {
   // 订阅的唯一ID
   id: 1,
   // 频道与回调保存容器
@@ -56,3 +56,5 @@ PubSub.unsubscribe = function (flag) {
     }
   }
 }
+
+export default PubSub
