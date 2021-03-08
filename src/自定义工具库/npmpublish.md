@@ -18,6 +18,12 @@ npm配置的中央仓库不能是淘宝镜像
 关键信息: 用户名/密码/邮箱(需要验证)
 #### 2.4.添加用户
 执行: npm addUser
+> 在家中无法登录
+> npm ERR! network This is a problem related to network connectivity.
+> npm ERR! network In most cases you are behind a proxy or have bad network settings.
+> npm ERR! network
+> npm ERR! network If you are behind a proxy, please make sure that the
+> npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
 登陆npm仓库
 依次指定用户名/密码/邮箱
 
