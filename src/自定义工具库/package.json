@@ -1,0 +1,20 @@
+{
+  "name": "yx-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/yx-utils.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [
+    "utils",
+    "yx-utils"
+  ],
+  "author": "yxls0805@163.com",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.16.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

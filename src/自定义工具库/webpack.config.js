@@ -1,17 +1,18 @@
-const { resolve } = require('path')
+const path = require('path')
 
 module.exports = {
   // 入口起点
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     // 文件输入名
-    filename: 'built.js',
+    filename: 'yx-utils.js',
     // 文件输出路径
     // __dirname nodejs的变量，代表当前文件的目录绝对路径
-    path: resolve(__dirname, 'dist'),
-    // 所有资源引入的公共路径前缀  --> 'imgs/a.jpg'  -->  '/imgs/a.jpg'
-    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'yx-utils',
+    libraryTarget: 'umd'
   },
   // 模式
-  mode: 'development'
+  // mode: 'development'
+  mode: 'production'
 }

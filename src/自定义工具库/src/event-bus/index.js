@@ -30,4 +30,4 @@ eventBus.off = function(type) {
   }
 }
 
-export default eventBus;
+export {eventBus};

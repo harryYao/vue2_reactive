@@ -1,4 +1,3 @@
-const { template } = require("babel-core");
 
 export function map(arr, callback){
   let result = [];
