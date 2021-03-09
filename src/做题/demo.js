@@ -83,3 +83,24 @@ function getIndex(arr){
   // method2 reduce方法
   return arr.reduce((num, v, i) => v > 0 && v < arr[num] ? i: num, 0)
 }
+
+
+// 53. 最大子序和
+// 示例 1：
+// 输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+// 输出：6
+// 解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+  let currentMax = 0;
+  let res = nums[0];
+  nums.map(item => {
+    currentMax = Math.max(currentMax + item, item);
+    res = Math.max(currentMax, res);
+  })
+  return res;
+};
