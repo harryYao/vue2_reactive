@@ -39,3 +39,6 @@ npm配置的中央仓库不能是淘宝镜像
 #### 2.7.强制删除已发布的库
 执行: npm unpublish --force
 注意: 必须在72小时内, 否则不能再删除
+
+
+> 发布成功 https://www.npmjs.com/package/yaoxin-utils
