@@ -26,7 +26,7 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+var longestSubstring = function(s) {
   let i = 0;
   let end = 1;
   let strLength = 0
