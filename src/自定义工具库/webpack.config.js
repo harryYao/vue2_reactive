@@ -5,11 +5,11 @@ module.exports = {
   entry: './src/index.js',
   output: {
     // 文件输入名
-    filename: 'yx-utils.js',
+    filename: 'yaoxin-utils.js',
     // 文件输出路径
     // __dirname nodejs的变量，代表当前文件的目录绝对路径
     path: path.resolve(__dirname, 'dist'),
-    library: 'yx-utils',
+    library: 'yaoxin-utils',
     libraryTarget: 'umd'
   },
   // 模式
