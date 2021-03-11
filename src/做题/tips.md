@@ -20,3 +20,14 @@ npm config set prefix "D:\system\nodejs\node_global"
 ````
 npm config set cache "D:\system\nodejs\node_cache"
 ```
+
+----
+
+## 快速启动一个静态服务器 
+https://www.npmjs.com/package/serve  
+方便用户构建后代码测试
+
+```
+npm i serve -g
+serve -s build
+```
