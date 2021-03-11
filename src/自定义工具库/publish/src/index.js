@@ -48,3 +48,7 @@ export { PubSub } from './pub-sub/index.js'
 
 // string
 export { reverseString, palindrome, truncate } from './string/index.js'
+
+import Promise from './promise/index.js';
+
+export { Promise }
