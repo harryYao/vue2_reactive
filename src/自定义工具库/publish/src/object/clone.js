@@ -26,11 +26,11 @@ export function clone2(target) {
   return target;
 }
 
-const obj = { x: 'abc', y: {m : 1}};
-const result = clone1(obj);
+const obj0 = { x: 'abc', y: {m : 1}};
+const result = clone1(obj0);
 result.y.m = 2;
 console.log(result);
-console.log(obj); //obj.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
+console.log(obj0); //obj0.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
 
 
 /**
@@ -150,3 +150,62 @@ export function deepClone4 (target, map = new Map()) {
   }
   return target
 }
+
+
+
+//需要拷贝的对象
+var obj = {
+  num: 0,
+  str: '',
+  boolean: true,
+  unf: undefined,
+  nul: null,
+  obj: { name: '对象', id: 1, gender: 1  },
+  arr: [0, 1, 2],
+  func: function () { console.log('函数') },
+  date: new Date(0),
+  reg: new RegExp('/正则/ig'),
+  [Symbol('1')]: 1,
+};
+Object.defineProperty(obj, 'innumerable', {
+  enumerable: false, value: '不可枚举属性' }
+);
+obj = Object.create(obj, Object.getOwnPropertyDescriptors(obj))
+obj.loop = obj    // 设置loop成循环引用的属性
+//判断数据类型
+function ifType(val){
+  let type  = typeof val;
+  if (type !== "object") {
+    return type;
+  }
+  return Object.prototype.toString.call(val).replace(/^\[object (\S+)\]$/, '$1');
+}
+//拷贝代码
+const deepClone5 = function (obj, hash = new WeakMap()) {
+  if (ifType(obj) === 'Date') 
+  return new Date(obj)       // 日期对象直接返回一个新的日期对象
+  if (ifType(obj) === 'RegExp')
+  return new RegExp(obj)     //正则对象直接返回一个新的正则对象
+  //如果循环引用了就用 weakMap 来解决
+  if (hash.has(obj)) return hash.get(obj)
+  let allDesc = Object.getOwnPropertyDescriptors(obj)
+  //遍历传入参数所有键的特性
+  let copyObj = Object.create(Object.getPrototypeOf(obj), allDesc)
+  //继承原型链
+  hash.set(obj, copyObj)
+  const isType = obj => (typeof obj === 'object' || typeof obj === 'function') && (obj !== null)
+  for (let key of Reflect.ownKeys(obj)) { 
+    copyObj[key] = (isType(obj[key]) && typeof obj[key] !== 'function') ? deepClone5(obj[key], hash) : obj[key]
+  }
+  return copyObj
+}
+//验证
+let copyObj = deepClone5(obj)
+copyObj.arr.push(4)
+console.log('原始对象obj', obj)
+console.log('拷贝后的对象copyeObj', copyObj)
+
+// 作者：cn_gxf
+// 链接：https://juejin.cn/post/6938341501831217189
+// 来源：掘金
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
