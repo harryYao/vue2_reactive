@@ -18,7 +18,7 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var merge = function(nums1, m, nums2, n) {
+var mergeTwoSortArray = function(nums1, m, nums2, n) {
 // 初始化两个指针的指向，初始化 nums1 尾部索引k
   let i = m - 1, j = n - 1, k = m + n - 1
   // 当两个数组都没遍历完时，指针同步移动
