@@ -1,3 +1,4 @@
+
 const PENDIGN = 'pending' // 初始未确认的状态
 const RESOLVED = 'resolved'  // 成功的状态
 const REJECTED = 'rejected' // 失败的状态
@@ -127,6 +128,31 @@ Promise.prototype.then = function(onResolved, onRejected) {
  */
 Promise.prototype.catch = function (onRejected) {
   return this.then(undefined, onRejected);
+}
+
+/**
+ * 用来返回一个指定vlaue的成功的promise
+ * value可能是一个一般的值, 也可能是promise对象
+ * @returns 
+ */
+Promise.resolve = function() {
+  return new Promise((resolve, reject) => {
+    if (value instanceof Promise) {
+      value.then(resolve, reject);
+    } else {
+      resolve(value);
+    }
+  })
+}
+
+/**
+ * 用来返回一个指定reason的失败的promise
+ * @returns 
+ */
+Promise.reject = function() {
+  return new Promise((resolve, reject) => {
+    reject(reason);
+  })
 }
 
 export default Promise
