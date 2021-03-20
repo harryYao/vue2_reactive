@@ -155,4 +155,29 @@ Promise.reject = function() {
   })
 }
 
+/**
+ * 返回一个promise, 只有当数组中所有的promise都成功才成功，否则失败
+ * @param {*} promises 
+ * @returns 
+ */
+Promise.all = function(promises) {
+  return new Promise((resolve, reject) => {
+    let resolvedCount = 0; // 已经成功的数量
+    const values = new Array(promises.length) // 用来保存成功的promise的value值
+
+    promises.forEach((p, index) => {
+      p.then(
+        value => {
+          resolvedCount++;
+          values[index] = value;
+          if (resolvedCount === promises.length) {
+            resolve(values)
+          }
+        },
+        reason => reject(reason)
+      )
+    })
+  })
+}
+
 export default Promise
