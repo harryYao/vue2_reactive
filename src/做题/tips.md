@@ -13,11 +13,12 @@
 ## npm 修改缓存路径，减少c盘压力
 
 * 设置 npm 全局包下载路径
-```
+```js
 npm config set prefix "D:\system\nodejs\node_global"
 ```
+
 * 设置 npm 缓存路径
-````
+```js
 npm config set cache "D:\system\nodejs\node_cache"
 ```
 
@@ -27,7 +28,7 @@ npm config set cache "D:\system\nodejs\node_cache"
 https://www.npmjs.com/package/serve  
 方便用户构建后代码测试
 
-```
+```js
 npm i serve -g
 serve -s build
 ```
