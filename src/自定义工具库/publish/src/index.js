@@ -52,3 +52,7 @@ export { reverseString, palindrome, truncate } from './string/index.js'
 import Promise from './promise/index.js';
 
 export { Promise }
+
+import SingleInstance from './singleInstance/index.js';
+
+export { SingleInstance }
