@@ -20,7 +20,7 @@ function Person(name, age) {
 }
 
 let obj = newInstance(Person, '张三', 20);
-console.log(obj);
+// console.log(obj);
 
 // 自定义检测类型
 export function myInstance(obj, Fn) {
@@ -30,7 +30,7 @@ export function myInstance(obj, Fn) {
   let proto = obj.__proto__;
   // 遍历原型链
   while (proto) {
-    console.log('proto', proto);
+    // console.log('proto', proto);
     // 检测原型对象是否相等
     if (prototype === proto) {
       return true;
@@ -41,11 +41,11 @@ export function myInstance(obj, Fn) {
   return false;
 }
 const p = new Person('AA', 22);
-console.log(myInstance(p, Person)); // true
-console.log(myInstance(p, Object)); // true
-console.log(myInstance(Person, Object)); // true
-console.log(myInstance(Person, Function)); // true
-console.log(myInstance(p, Function)); // false
+// console.log(myInstance(p, Person)); // true
+// console.log(myInstance(p, Object)); // true
+// console.log(myInstance(Person, Object)); // true
+// console.log(myInstance(Person, Function)); // true
+// console.log(myInstance(p, Function)); // false
 
 
 // 合并对象  属性替换
@@ -62,7 +62,7 @@ const obj2 = {
   c: 'ddaa'
 }
 
-console.log(mergeObject(obj1, obj2));
+// console.log(mergeObject(obj1, obj2));
 
 // 合并对象  属性也合并
 export function mergeObjs(...objs) {

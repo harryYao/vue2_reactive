@@ -26,11 +26,11 @@ export function clone2(target) {
   return target;
 }
 
-const obj0 = { x: 'abc', y: {m : 1}};
-const result = clone1(obj0);
-result.y.m = 2;
-console.log(result);
-console.log(obj0); //obj0.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
+// const obj0 = { x: 'abc', y: {m : 1}};
+// const result = clone1(obj0);
+// result.y.m = 2;
+// console.log(result);
+// console.log(obj0); //obj0.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
 
 
 /**
@@ -105,22 +105,22 @@ export function deepClone3(target, map = new Map()) {
   return target;
 }
 
-const n1 = {
-  a: 1, b: ['a', 'b'], c: { d: 20 }, 
-  // JSON 不能clone方法
-  d: () => {
-    console.log('function');
-  }
-}
-// 循环引用不再出错
-n1.b.push(n1.c);
-n1.c.f = n1.b;
+// const n1 = {
+//   a: 1, b: ['a', 'b'], c: { d: 20 }, 
+//   // JSON 不能clone方法
+//   d: () => {
+//     console.log('function');
+//   }
+// }
+// // 循环引用不再出错
+// n1.b.push(n1.c);
+// n1.c.f = n1.b;
 
-const n2 = deepClone3(n1); 
-console.log(n2);
+// const n2 = deepClone3(n1); 
+// console.log(n2);
 
 /**
- * 优化遍历性能
+ * 递归深拷贝3, 优化遍历性能
  * @param {*} target 
  * @param {*} map 
  */
@@ -172,33 +172,33 @@ export function deepClone4 (target, map = new Map()) {
 // );
 // obj = Object.create(obj, Object.getOwnPropertyDescriptors(obj))
 // obj.loop = obj    // 设置loop成循环引用的属性
-// //判断数据类型
-// function ifType(val){
-//   let type  = typeof val;
-//   if (type !== "object") {
-//     return type;
-//   }
-//   return Object.prototype.toString.call(val).replace(/^\[object (\S+)\]$/, '$1');
-// }
-// //拷贝代码
-// const deepClone5 = function (obj, hash = new WeakMap()) {
-//   if (ifType(obj) === 'Date') 
-//   return new Date(obj)       // 日期对象直接返回一个新的日期对象
-//   if (ifType(obj) === 'RegExp')
-//   return new RegExp(obj)     //正则对象直接返回一个新的正则对象
-//   //如果循环引用了就用 weakMap 来解决
-//   if (hash.has(obj)) return hash.get(obj)
-//   let allDesc = Object.getOwnPropertyDescriptors(obj)
-//   //遍历传入参数所有键的特性
-//   let copyObj = Object.create(Object.getPrototypeOf(obj), allDesc)
-//   //继承原型链
-//   hash.set(obj, copyObj)
-//   const isType = obj => (typeof obj === 'object' || typeof obj === 'function') && (obj !== null)
-//   for (let key of Reflect.ownKeys(obj)) { 
-//     copyObj[key] = (isType(obj[key]) && typeof obj[key] !== 'function') ? deepClone5(obj[key], hash) : obj[key]
-//   }
-//   return copyObj
-// }
+//判断数据类型
+function ifType(val){
+  let type  = typeof val;
+  if (type !== "object") {
+    return type;
+  }
+  return Object.prototype.toString.call(val).replace(/^\[object (\S+)\]$/, '$1');
+}
+//拷贝代码
+const deepClone5 = function (obj, hash = new WeakMap()) {
+  if (ifType(obj) === 'Date') 
+  return new Date(obj)       // 日期对象直接返回一个新的日期对象
+  if (ifType(obj) === 'RegExp')
+  return new RegExp(obj)     //正则对象直接返回一个新的正则对象
+  //如果循环引用了就用 weakMap 来解决
+  if (hash.has(obj)) return hash.get(obj)
+  let allDesc = Object.getOwnPropertyDescriptors(obj)
+  //遍历传入参数所有键的特性
+  let copyObj = Object.create(Object.getPrototypeOf(obj), allDesc)
+  //继承原型链
+  hash.set(obj, copyObj)
+  const isType = obj => (typeof obj === 'object' || typeof obj === 'function') && (obj !== null)
+  for (let key of Reflect.ownKeys(obj)) { 
+    copyObj[key] = (isType(obj[key]) && typeof obj[key] !== 'function') ? deepClone5(obj[key], hash) : obj[key]
+  }
+  return copyObj
+}
 // //验证
 // let copyObj = deepClone5(obj)
 // copyObj.arr.push(4)

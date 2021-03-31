@@ -16,14 +16,14 @@ export function call (fn, obj, ...args) {
 /* ---------测试--------- */
 
 
-function add(a, b) {
-  console.log(this);
-  return a + b + this.c;
-}
-let obj = {
-  c: 'objccc'
-};
-window.c = 'windowccc';
+// function add(a, b) {
+//   console.log(this);
+//   return a + b + this.c;
+// }
+// let obj = {
+//   c: 'objccc'
+// };
+// window.c = 'windowccc';
 
-console.log(call(add, obj, 1, 2));
-console.log(call(add, null, 3, 4));
+// console.log(call(add, obj, 1, 2));
+// console.log(call(add, null, 3, 4));

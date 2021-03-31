@@ -13,7 +13,7 @@ const result = map(arr, (item) => {
   return item * 10;
 })
 
-console.log(result);
+// console.log(result);
 
 
 export function reduce(arr, callback, initVal) {
@@ -113,14 +113,14 @@ export function unique2(arr) {
 }
 
 const array1 = [1,2,3,1,2,5]
-console.log(unique(array1));
-console.log(unique2(array1));
+// console.log(unique(array1));
+// console.log(unique2(array1));
 
 // ES6的Set对象 更加方便去重
 export function unique3(arr) {
   return [...new Set(arr)]
 }
-console.log(unique3(array1));
+// console.log(unique3(array1));
 
 export function concat(arr, ...args) {
   const result = [...arr];
@@ -134,7 +134,7 @@ export function concat(arr, ...args) {
   return result;
 }
 
-console.log(concat(arr, [5,6,7], 8, 9));
+// console.log(concat(arr, [5,6,7], 8, 9));
 
 export function slice(arr, start, end) {
   if (arr.length === 0) return [];
@@ -158,7 +158,7 @@ export function slice(arr, start, end) {
   return result;
 }
 const arrslice = [1,3,5,7,9,11,13,15];
-console.log(slice(arrslice, 2, 5));
+// console.log(slice(arrslice, 2, 5));
 
 /**
  * 数组的扁平化
@@ -178,7 +178,7 @@ console.log(slice(arrslice, 2, 5));
   return result;
 }
 const arrflat = [1,3,[5,[7,9]],11,13,15];
-console.log(flat(arrflat));
+// console.log(flat(arrflat));
 
 /**
  * Flat2
@@ -212,7 +212,7 @@ export function chunk(arr, size = 1) {
   return result;
 }
 const arrchunk = [1,3,5,7,9,11,13,15];
-console.log(chunk(arrchunk));
+// console.log(chunk(arrchunk));
 
 
 // 语法: difference(arr1, arr2)
@@ -228,7 +228,7 @@ export function difference(arr1, arr2) {
   }
   return result;
 }
-console.log(difference([1,3,5,7], [5, 8]));
+// console.log(difference([1,3,5,7], [5, 8]));
 
 export function difference2(arr1, arr2 = []) {
   if(arr1.length === 0) return [];
@@ -237,7 +237,7 @@ export function difference2(arr1, arr2 = []) {
   // return arr1.filter(item => arr2.indexOf(item) === -1)
   return arr1.filter(item => !arr2.includes(item))
 }
-console.log(difference2([1,3,5,7], [5, 8]));
+// console.log(difference2([1,3,5,7], [5, 8]));
 
 
 
@@ -261,8 +261,8 @@ export function pull(arr, ...values) {
   return result;
 }
 const arrpull = [1,3,5,3,7]
-console.log(pull(arrpull, 2, 7, 3, 7));
-console.log(arrpull);
+// console.log(pull(arrpull, 2, 7, 3, 7));
+// console.log(arrpull);
 
 // pullAll(array, values):
 // 功能与pull一致, 只是参数变为数组
@@ -279,8 +279,8 @@ export function pullAll(arr, values) {
   return result;
 }
 const arrpull2 = [1,3,5,3,7,2,6,8]
-console.log(pullAll(arrpull2, [2, 7, 3, 7]));
-console.log(arrpull2);
+// console.log(pullAll(arrpull2, [2, 7, 3, 7]));
+// console.log(arrpull2);
 
 
 
@@ -300,7 +300,7 @@ function drop2(arr, count) {
 // 所以filter方法比较简单，下同
 
 const arr_drop = [1,2,3,4,5,7]
-console.log(drop(arr_drop, 2));
+// console.log(drop(arr_drop, 2));
 
 // dropRight(array, count)
 // 得到当前数组过滤掉右边count个后剩余元素组成的数组
@@ -317,4 +317,4 @@ export function dropRight2(arr, count) {
   return arr.filter((item, index) => index < (arr.length - count))
 }
 const arr_drop_right = [1,2,3,4,5,7]
-console.log(dropRight(arr_drop_right, 2));
+// console.log(dropRight(arr_drop_right, 2));

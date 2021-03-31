@@ -10,7 +10,7 @@ export function addEventListener(el, type, fn, selector) {
   } else {
     el.addEventListener(type, function(e) {
       const target = e.target;
-      console.log(target);
+      // console.log(target);
       // 与选择器是否匹配 matches 
       if (target.matches(selector)) {
         fn.call(target, e);
