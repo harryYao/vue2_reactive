@@ -21,6 +21,7 @@ function duplicateEncode(word){
 // 一行简写
 const duplicateEncode2 = (s) => s.toLowerCase().split('').map((a, i, w) => w.indexOf(a) === w.lastIndexOf(a) ? '(': ')').join('');
 
+// 性能优于上面的lasdIndexOf判断方法
 const duplicateEncode3 = (word) => {
   const map = new Map();
   word = word.toLowerCase();
