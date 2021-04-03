@@ -1,5 +1,6 @@
 // 题目描述
-// 给你一个只包括二进制数的字符串 s 和整数 k，如果每个长度为 k 的二进制串都是 s 的字串（substring）返回 true，否则返回 false（注意：substring 和 subsequence 的区别）
+// 给你一个只包括二进制数的字符串 s 和整数 k，如果每个长度为 k 的二进制串都是 s 的字串（substring）返回 true，
+// 否则返回 false（注意：substring 和 subsequence 的区别）
 // 例一：
 // 输入: s = "00110110", k = 2
 // 输出: true
@@ -40,4 +41,5 @@ let s = "00110110";
 let k = 2;
 hasAllCodes(s, k);
 
+// 这题巧妙利用set的特性，解决了问题
 
