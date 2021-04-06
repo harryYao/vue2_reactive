@@ -45,3 +45,7 @@ npm配置的中央仓库不能是淘宝镜像
 
 > 1. 发布会将package.json所在的目录全部发布到 npm
 > 2. library 名称不要带 “-”
+
+
+
+<!-- https://zxfjd3g.github.io/atguigu_utils-docs/ -->
