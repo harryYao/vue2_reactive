@@ -1,4 +1,8 @@
 // # 3.1 冒泡排序（Bubble Sort）
+// https://biaochenxuying.cn/articleDetail?article_id=5d4059b896cf541789792485
+
+
+
 
 // 冒泡排序（未优化）
 const bubbleSort = arr => {
