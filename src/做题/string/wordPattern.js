@@ -58,14 +58,14 @@ var wordPattern = function (pattern, s) {
 // 思路1 通过结合两者的值 在进行去重处理
 
 var wordPattern1 = function (pattern, s) {
-    const words = s.split(" ");
-    if (pattern.length !== words.length) return false;
-    let h = [];
-    for (let i = 0; i < words.length; i++) {
-        h[i] = pattern[i] + "," + words[i];
-    }
-    const len = new Set(h).size;
-    return len == new Set(pattern).size && len == new Set(words).size;
+  const words = s.split(" ");
+  if (pattern.length !== words.length) return false;
+  let h = [];
+  for (let i = 0; i < words.length; i++) {
+    h[i] = pattern[i] + "," + words[i];
+  }
+  const len = new Set(h).size;
+  return len == new Set(pattern).size && len == new Set(words).size;
 }
 
 // 思路2 通过各自字元素在 字符串 或者数组中 的索引值的和来判断
