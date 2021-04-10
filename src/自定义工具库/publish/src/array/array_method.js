@@ -18,11 +18,6 @@ export function reduce(arr, callback, initVal) {
   return result;
 }
 
-const result1 = reduce(arr, function(res, value) {
-  return res + value
-}, 0)
-
-
 export function filter(arr, callback) {
   let result = [];
   for (let i = 0; i < arr.length; i++) {
@@ -31,8 +26,6 @@ export function filter(arr, callback) {
   }
   return result;
 }
-const result2 = filter(arr, item => item % 2 === 0);
-
 
 export function find(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
@@ -43,9 +36,6 @@ export function find(arr, callback) {
   }
   return undefined;
 }
-
-const result3 = find(arr, item => item > 2);
-
 
 export function findIndex(arr, callback) {
   for (let i = 0; i < arr.length; i++) {

@@ -6,50 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="../dist/yaoxin-utils.js"></script>
+  <script src="./testlog.js"></script>
 </head>
 <body>
   <script>
-    const { map, reduce } = yxutils;
+    const { map, reduce, filter, find } = yxutils;
     const arr = [1,2,3,4];
-    const logStyle = 'color: #A23598; font-style: italic';
 
 
-    /*  test map  */
-    console.group('Test Array Function: map');
-    const result = map(arr, (item) => {
-      return item * 10;
+    testLog('map', () => {
+      return map(arr, (item) => {
+        return item * 10;
+      })
     })
-    console.log(`%cconst result = map(arr, (item) => {
-      return item * 10;
-    })`, logStyle);
-    console.log(result);
-    console.groupEnd();
 
 
-    /*  test reduce  */
-    console.group('Test Array Function: reduce');
-    const result1 = reduce(arr, function(res, value) {
-      return res + value
-    }, 0)
-    console.log(`%cconst result1 = reduce(arr, function(res, value) {
-  return res + value
-}, 0)`, logStyle);
-    console.log(result1);
-    console.groupEnd();
+    testLog('reduce', () => {
+      return reduce(arr, function(res, value) {
+        return res + value
+      }, 0);
+    })
 
-    // testLog('reduce', () => {
-    //   return reduce(arr, function(res, value) {
-    //     return res + value
-    //   }, 0);
-    // })
 
-    // const testLog = (name, fn) => {
-    //   console.group(`Test Array Function: ${name}`);
-    //   console.log('%c' + fn.tostring(), logStyle);
-    //   const result = fn();
-    //   console.log('result:', result);
-    //   console.groupEnd();
-    // }
-  </script>
+    testLog('filter', () => {
+      return filter(arr, item => item % 2 === 0);
+    })
+    
+    
+    testLog('find', () => {
+      return find(arr, item => item > 1);
+    })
+
+
+
+    </script>
 </body>
 </html>
