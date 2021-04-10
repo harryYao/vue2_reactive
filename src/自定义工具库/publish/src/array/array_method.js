@@ -7,14 +7,8 @@ export function map(arr, callback){
   return result;
 }
 
-// 测试
+
 const arr = [1,2,3,4];
-const result = map(arr, (item) => {
-  return item * 10;
-})
-
-// console.log(result);
-
 
 export function reduce(arr, callback, initVal) {
   let result = initVal;
