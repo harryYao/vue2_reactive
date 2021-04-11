@@ -10,7 +10,9 @@
 </head>
 <body>
   <script>
-    const { map, reduce, filter, find, findIndex, every } = yxutils;
+    const { map, reduce, filter, find, findIndex, every, some } = yxutils;
+    // 数组去重方法
+    const { unique, unique2, unique3 } = yxutils;
     const arr = [1,2,3,4];
 
 
@@ -49,6 +51,33 @@
     testLog('every', () => {
       return every(arr, item => item > 2);
     })
+    
+    
+    testLog('some', () => {
+      return some(arr, item => item > 3);
+    })
+    testLog('some', () => {
+      return some(arr, item => item > 4);
+    })
+    
+    
+    // 数组去重
+    const array1 = [1,2,3,1,2,5,6,7,8,5,4,3,6,7]
+    testLog('unique', () => {
+      return unique(array1);
+    })
+    testLog('unique2', () => {
+      return unique2(array1);
+    })
+    testLog('unique3', () => {
+      return unique3(array1);
+    })
+
+
+
+
+
+
 
     </script>
 </body>

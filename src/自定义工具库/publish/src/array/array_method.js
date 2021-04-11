@@ -7,9 +7,6 @@ export function map(arr, callback){
   return result;
 }
 
-
-const arr = [1,2,3,4];
-
 export function reduce(arr, callback, initVal) {
   let result = initVal;
   for (let i = 0; i < arr.length; i++) {
@@ -55,7 +52,6 @@ export function every(arr, callback) {
   }
   return true;
 }
-const result5 = every(arr, item => item > 0);
 
 export function some(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
@@ -65,7 +61,6 @@ export function some(arr, callback) {
   }
   return false;
 }
-const result6 = some(arr, item => item > 3);
 
 
 /**
@@ -93,15 +88,11 @@ export function unique2(arr) {
   return result;
 }
 
-const array1 = [1,2,3,1,2,5]
-// console.log(unique(array1));
-// console.log(unique2(array1));
-
 // ES6的Set对象 更加方便去重
 export function unique3(arr) {
   return [...new Set(arr)]
 }
-// console.log(unique3(array1));
+
 
 export function concat(arr, ...args) {
   const result = [...arr];
