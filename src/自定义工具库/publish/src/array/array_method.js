@@ -47,9 +47,6 @@ export function findIndex(arr, callback) {
   return -1;
 }
 
-const result4 = findIndex(arr, item => item > 2);
-
-
 export function every(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     if (!callback(arr[i], i)) {

@@ -10,7 +10,7 @@
 </head>
 <body>
   <script>
-    const { map, reduce, filter, find } = yxutils;
+    const { map, reduce, filter, find, findIndex, every } = yxutils;
     const arr = [1,2,3,4];
 
 
@@ -36,8 +36,19 @@
     testLog('find', () => {
       return find(arr, item => item > 1);
     })
-
-
+    
+    
+    testLog('findIndex', () => {
+      return findIndex(arr, item => item > 2);
+    })
+    
+    
+    testLog('every', () => {
+      return every(arr, item => item > 0);
+    })
+    testLog('every', () => {
+      return every(arr, item => item > 2);
+    })
 
     </script>
 </body>
