@@ -106,8 +106,6 @@ export function concat(arr, ...args) {
   return result;
 }
 
-// console.log(concat(arr, [5,6,7], 8, 9));
-
 export function slice(arr, start, end) {
   if (arr.length === 0) return [];
 
@@ -129,8 +127,6 @@ export function slice(arr, start, end) {
   }
   return result;
 }
-const arrslice = [1,3,5,7,9,11,13,15];
-// console.log(slice(arrslice, 2, 5));
 
 /**
  * 数组的扁平化
@@ -149,8 +145,6 @@ const arrslice = [1,3,5,7,9,11,13,15];
   }
   return result;
 }
-const arrflat = [1,3,[5,[7,9]],11,13,15];
-// console.log(flat(arrflat));
 
 /**
  * Flat2
@@ -162,6 +156,7 @@ export function flat2(arr) {
   while (result.some(item => Array.isArray(item))) {
     result = [].concat(...result);
   }
+  return result;
 }
 
 /**

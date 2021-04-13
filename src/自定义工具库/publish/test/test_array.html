@@ -13,6 +13,7 @@
     const { map, reduce, filter, find, findIndex, every, some } = yxutils;
     // 数组去重方法
     const { unique, unique2, unique3 } = yxutils;
+    const { concat, slice, flat, flat2, chunk } = yxutils;
     const arr = [1,2,3,4];
 
 
@@ -72,12 +73,32 @@
     testLog('unique3', () => {
       return unique3(array1);
     })
+    
+        
+    testLog('concat', () => {
+      return concat(arr, [5,6,7], 8, 9);
+    })
+    
+    
+    testLog('slice', () => {
+      const arrslice = [1,3,5,7,9,11,13,15];
+      return slice(arrslice, 2, 5);
+    })
+    
+    testLog('flat', () => {
+      const arrflat = [1,3,[5,[7,9]],11,13,15];
+      return flat(arrflat);
+    })
+    testLog('flat2', () => {
+      const arrflat = [1,3,[5,[7,9]],11,13,15];
+      return flat2(arrflat);
+    })
 
 
-
-
-
-
+    testLog('chunk', () => {
+      const arrchunk = [1,3,5,7,9,11,13,15];
+      return chunk(arrchunk, 3);
+    })
 
     </script>
 </body>
