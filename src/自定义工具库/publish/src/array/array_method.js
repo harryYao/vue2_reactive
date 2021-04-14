@@ -178,8 +178,6 @@ export function chunk(arr, size = 1) {
   }
   return result;
 }
-const arrchunk = [1,3,5,7,9,11,13,15];
-// console.log(chunk(arrchunk));
 
 
 // 语法: difference(arr1, arr2)
@@ -195,7 +193,6 @@ export function difference(arr1, arr2) {
   }
   return result;
 }
-// console.log(difference([1,3,5,7], [5, 8]));
 
 export function difference2(arr1, arr2 = []) {
   if(arr1.length === 0) return [];
