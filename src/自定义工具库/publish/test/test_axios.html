@@ -5,10 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./index.js"></script>
+  <script src="../dist/yaoxin-utils.js"></script>
 </head>
 <body>
   <script>
+    const { axios } = yxutils;
     axios({
       method: 'POST',
       url: 'http://poetry.apiopen.top/sentences',
@@ -19,7 +20,7 @@
         c: 30, d: 40
       }
     }).then(res => {
-      console.log(res);
+      console.log(JSON.stringify(res));
     }).catch(reason => {
       console.log(resson);
     });
@@ -30,7 +31,7 @@
         b: 200
       }
     }).then(res => {
-      console.log(res);
+      console.log(JSON.stringify(res));
     })
     axios.post('http://poetry.apiopen.top/sentences', {
       params : {
@@ -41,7 +42,7 @@
         c: 300, d: 400
       }
     }).then(res => {
-      console.log(res);
+      console.log(JSON.stringify(res));
     })
     axios.put('http://poetry.apiopen.top/sentences', {
       params : {
@@ -49,7 +50,7 @@
         b: 200
       }
     }).then(res => {
-      console.log(res);
+      console.log(JSON.stringify(res));
     })
     axios.delete('http://poetry.apiopen.top/sentences', {
       params : {
