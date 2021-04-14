@@ -11,11 +11,10 @@
 <body>
   <script>
     const { map, reduce, filter, find, findIndex, every, some } = yxutils;
-    // 数组去重方法
-    const { unique, unique2, unique3 } = yxutils;
-    const { concat, slice, flat, flat2, chunk, difference, difference2 } = yxutils;
+    const { unique, unique2, unique3, flat, flat2, difference, difference2 } = yxutils;
+    const { concat, slice,  chunk, pull, pullAll, drop, drop2, dropRight, dropRight2 } = yxutils;
+    
     const arr = [1,2,3,4];
-
 
     testLog('map', () => {
       return map(arr, (item) => {
@@ -85,6 +84,7 @@
       return slice(arrslice, 2, 5);
     })
     
+
     testLog('flat', () => {
       const arrflat = [1,3,[5,[7,9]],11,13,15];
       return flat(arrflat);
@@ -106,6 +106,37 @@
     })
     testLog('difference2', () => {
       return difference2([1,3,5,7], [5, 8]);
+    })
+
+
+    testLog('pull', () => {
+      const arrpull = [1,3,5,3,7]
+      return pull(arrpull, 2, 7, 3, 7);
+    })
+    testLog('pullAll', () => {
+      const arrpull = [1,3,5,3,7]
+      return pullAll(arrpull, [2,3,7]);
+    })
+
+
+
+    testLog('drop', () => {
+      const arr_drop = [1,2,3,4,5,7]
+      return drop(arr_drop, 2);
+    })
+    testLog('drop2', () => {
+      const arr_drop = [1,2,3,4,5,7]
+      return drop2(arr_drop, 4);
+    })
+
+
+    testLog('dropRight', () => {
+      const arr_drop_right = [1,2,3,4,5,7]
+      return dropRight(arr_drop_right, 2);
+    })
+    testLog('dropRight2', () => {
+      const arr_drop_right = [1,2,3,4,5,7]
+      return dropRight2(arr_drop_right, 4);
     })
 
     </script>

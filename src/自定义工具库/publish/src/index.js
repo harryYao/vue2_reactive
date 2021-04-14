@@ -20,7 +20,9 @@ export {
   pull,
   pullAll,
   drop,
-  dropRight
+  drop2,
+  dropRight,
+  dropRight2
  } from './array/array_method.js'
 
 // 自定义axios 

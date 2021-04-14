@@ -201,19 +201,13 @@ export function difference2(arr1, arr2 = []) {
   // return arr1.filter(item => arr2.indexOf(item) === -1)
   return arr1.filter(item => !arr2.includes(item))
 }
-// console.log(difference2([1,3,5,7], [5, 8]));
-
 
 
 // pull(array, ...values):
 // 删除原数组中与value相同的元素, 返回所有删除元素的数组
 // 说明: 原数组发生了改变
 // 如: pull([1,3,5,3,7], 2, 7, 3, 7) ===> 原数组变为[1, 5], 返回值为[3,3,7]
-
 export function pull(arr, ...values) {
-  // 这个没有删除
-  // return arr.filter(item => ![...values].includes(item))
-
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     if (values.includes(arr[i])) {
@@ -224,9 +218,6 @@ export function pull(arr, ...values) {
   }
   return result;
 }
-const arrpull = [1,3,5,3,7]
-// console.log(pull(arrpull, 2, 7, 3, 7));
-// console.log(arrpull);
 
 // pullAll(array, values):
 // 功能与pull一致, 只是参数变为数组
@@ -242,10 +233,6 @@ export function pullAll(arr, values) {
   }
   return result;
 }
-const arrpull2 = [1,3,5,3,7,2,6,8]
-// console.log(pullAll(arrpull2, [2, 7, 3, 7]));
-// console.log(arrpull2);
-
 
 
 // drop(array, count)
@@ -257,14 +244,12 @@ export function drop(arr, count) {
   if (count <= 0) return arr;
   return arr.slice(count)
 }
-function drop2(arr, count) {
-  return arr.filter((item, index) => index >= count)
-}
 // slice方法可以传负数，所以需要判断
 // 所以filter方法比较简单，下同
+export function drop2(arr, count) {
+  return arr.filter((item, index) => index >= count)
+}
 
-const arr_drop = [1,2,3,4,5,7]
-// console.log(drop(arr_drop, 2));
 
 // dropRight(array, count)
 // 得到当前数组过滤掉右边count个后剩余元素组成的数组
@@ -280,5 +265,3 @@ export function dropRight(arr, count) {
 export function dropRight2(arr, count) {
   return arr.filter((item, index) => index < (arr.length - count))
 }
-const arr_drop_right = [1,2,3,4,5,7]
-// console.log(dropRight(arr_drop_right, 2));
