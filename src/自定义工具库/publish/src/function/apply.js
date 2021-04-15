@@ -11,18 +11,3 @@ export function apply(fn, obj, args) {
 
   return result;
 }
-
-/* ---------测试--------- */
-
-
-// function add(a, b) {
-//   console.log(this);
-//   return a + b + this.c;
-// }
-// let obj = {
-//   c: 'objccc'
-// };
-// window.c = 'windowccc';
-
-// console.log(apply(add, obj, [1, 2]));
-// console.log(apply(add, null, [3, 4]));

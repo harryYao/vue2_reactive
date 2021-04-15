@@ -1,12 +1,13 @@
-function call (fn, obj, ...args) {
-  if (obj === undefined || obj === null) {
-    obj = globalThis;
-  }
-  obj.__temp__ = fn;
-  let result = obj.__temp__(...args);
-  delete obj.__temp__;
-  return result
-}
+// function call (fn, obj, ...args) {
+//   if (obj === undefined || obj === null) {
+//     obj = globalThis;
+//   }
+//   obj.__temp__ = fn;
+//   let result = obj.__temp__(...args);
+//   delete obj.__temp__;
+//   return result
+// }
+import call from './call'
 
 export function bind (fn, obj, ...args) {
   // 返回一个新函数，调用fn，并改变this指向

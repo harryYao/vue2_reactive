@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../dist/yaoxin-utils.js"></script>
+  <script src="./testlog.js"></script>
+</head>
+<body>
+  <script>
+    // call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：
+    // call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 obj.myFun.call(db,'成都', ... ,'string' )。
+    // apply 的所有参数都必须放在一个数组里面传进去 obj.myFun.apply(db,['成都', ..., 'string' ])。
+    // bind 除了返回是函数以外，它 的参数和 call 一样。
+
+    // 我们自定义的再多一个参数fn，其他和以上一样
+
+    const {apply, bind, call} = yxutils;
+
+    function add(a, b) {
+      // console.log(this);
+      return a + b + this.c;
+    }
+    let obj = {
+      c: 'objccc'
+    };
+    window.c = 'windowccc';
+
+    // test apply
+    console.log(apply(add, obj, [1, 2]));
+    console.log(apply(add, null, [3, 4]));
+
+    // test call
+    console.log(call(add, obj, 1, 2));
+    console.log(call(add, null, 3, 4));
+
+    // apply 和 call 区别是传参方式不同
+
+    // test bind
+    let fn = bind(add, obj, 1, 2)
+    console.log(fn());
+
+    let fn2 = bind(add)
+    console.log(fn2(3, 4));
+  </script>
+</body>
+</html>
