@@ -9,6 +9,20 @@
   <script src="./testlog.js"></script>
 </head>
 <body>
+  <div>
+    <input type="text" >
+    <div class="target">
+      <span>坐标位置：</span>
+      <span id="target"></span>
+    </div>
+    <div class="target">
+      <span>节流显示坐标位置：</span>
+      <span id="target2"></span>
+    </div>
+    <div id="area" style="width: 600px; height: 400px; border: 1px solid #ededed;"></div>
+  </div>
+
+
   <script>
     // call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：
     // call 的参数是直接放进去的，第二第三第 n 个参数全都用逗号分隔，直接放到后面 obj.myFun.call(db,'成都', ... ,'string' )。
@@ -17,7 +31,17 @@
 
     // 我们自定义的再多一个参数fn，其他和以上一样
 
-    const {apply, bind, call} = yxutils;
+    const {apply, bind, call, debounce, throttle, throttle2} = yxutils;
+
+    // 节流测试
+    const t = 0;
+    document.getElementById('area').addEventListener('mousemove', function(e) {
+      document.getElementById('target').innerText = `X:${e.offsetX}, Y:${e.offsetY}`
+    })
+    document.getElementById('area').addEventListener('mousemove', throttle(function(e) {
+      document.getElementById('target2').innerText = `X:${e.offsetX}, Y:${e.offsetY}`
+    }, 200))
+
 
     function add(a, b) {
       // console.log(this);
@@ -40,9 +64,9 @@
 
     // test bind
     let fn = bind(add, obj, 1, 2)
-    console.log(fn());
+    console.log(fn(3, 4));
 
-    let fn2 = bind(add)
+    let fn2 = bind(add, obj)
     console.log(fn2(3, 4));
   </script>
 </body>

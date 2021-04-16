@@ -39,7 +39,7 @@ export { apply } from './function/apply.js'
 export { call } from './function/call.js'
 export { bind } from './function/bind.js'
 export { debounce } from './function/debounce.js'
-export { throttle } from './function/throttle.js'
+export { throttle, throttle2 } from './function/throttle.js'
 
 // object
 export { newInstance, myInstance } from './object/object.js'

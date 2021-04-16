@@ -2,14 +2,15 @@
 
 // 2. 节流
 // 高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率
-export function throttle(fn) {
+export function throttle(fn, wait = 500) {
   let canRun = true;
   return function() {
     if (!canRun) return;
     setTimeout(() => {
       fn.apply(this, arguments);
       canRun = true;
-    }, 500)
+    }, wait)
+    canRun = false;
   }
 }
 

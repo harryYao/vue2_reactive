@@ -7,7 +7,7 @@
 //   delete obj.__temp__;
 //   return result
 // }
-import call from './call'
+import  {call}  from './call'
 
 export function bind (fn, obj, ...args) {
   // 返回一个新函数，调用fn，并改变this指向

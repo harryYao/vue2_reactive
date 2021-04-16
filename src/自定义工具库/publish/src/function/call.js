@@ -2,6 +2,9 @@ export function call (fn, obj, ...args) {
   if (obj === undefined || obj === null) {
     obj = globalThis; // 全局对象
   }
+
+  console.log('call:', obj);
+
   // 为obj添加临时方法
   obj.__temp__ = fn;
   // 调用 __temp__ 方法
