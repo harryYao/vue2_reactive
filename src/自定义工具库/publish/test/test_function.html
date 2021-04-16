@@ -7,10 +7,27 @@
   <title>Document</title>
   <script src="../dist/yaoxin-utils.js"></script>
   <script src="./testlog.js"></script>
+  <style>
+    .half {
+      width: 50%;
+    }
+  </style>
 </head>
 <body>
   <div>
-    <input type="text" >
+    <div style="width: 600px; display: flex;">
+      <div class="half">
+        <p>未防抖</p>
+        <input type="text" id="input">
+        <p id="inputshow"></p>
+      </div>
+      <div class="half">
+        <p>防抖</p>
+        <input type="text" id="input2">
+        <p id="inputshow2"></p>
+      </div>
+    </div>
+    
     <div class="target">
       <span>坐标位置：</span>
       <span id="target"></span>
@@ -41,6 +58,17 @@
     document.getElementById('area').addEventListener('mousemove', throttle(function(e) {
       document.getElementById('target2').innerText = `X:${e.offsetX}, Y:${e.offsetY}`
     }, 200))
+
+    // 防抖测试
+
+    document.getElementById('input').addEventListener('input', function(e) {
+      document.getElementById('inputshow').innerText = e.target.value;
+    })
+    document.getElementById('input2').addEventListener('input', debounce(function(e) {
+      document.getElementById('inputshow2').innerText = e.target.value;
+    }, 300))
+
+
 
 
     function add(a, b) {
