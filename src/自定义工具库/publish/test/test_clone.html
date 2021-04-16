@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../dist/yaoxin-utils.js"></script>
+  <script src="./testlog.js"></script>
+</head>
+<body>
+  <script>
+    const { clone, clone2 } = yxutils;
+
+    console.group('浅拷贝')
+    const obj0 = { x: 'abc', y: {m : 1}};
+    console.log('原值 ：', JSON.stringify(obj0)); //obj0.y.m = 2，浅拷贝时，原对象的引用属性值改变时，clone对象的属性也被改变
+    const result = clone(obj0);
+    const result2 = clone2(obj0);
+    
+    obj0.y.m = 2;
+    console.log('修改后值 ：', JSON.stringify(obj0)); //obj0.y.m = 2，浅拷贝时，原对象的引用属性值改变时，clone对象的属性也被改变
+    console.log('clone：', JSON.stringify(result));
+    console.log('clone2：', JSON.stringify(result2));
+
+    log('结论:', '#006fd0', '16px', true);
+    log('1. 浅拷贝时，原对象的引用属性值改变时，clone对象的属性也被改变', '#2368a5', '14px');
+    console.groupEnd('浅拷贝')
+    
+    
+    const { deepClone1, deepClone2, deepClone3, deepClone4 } = yxutils;
+    
+    const m1 = {
+      num: 1, 
+      str: 'str',
+      bool: true,
+      unf: undefined, // 直接删除了
+      nul: null,
+      arr: ['a'], 
+      obj: { d: 20 }, 
+      fn: () => {
+        console.log('function');
+      },
+      symbol: Symbol(1),
+      date: new Date(),
+      reg: new RegExp('/正则/ig')
+    }
+
+    console.group('深拷贝 JSON.stringify版本')
+    const d1 = deepClone1(m1);
+    console.log(d1);
+    // arr: ["a"]
+    // bool: true
+    // date: "2021-04-16T08:14:06.922Z"
+    // nul: null
+    // num: 1
+    // obj: {d: 20}
+    // reg: {}
+    // str: "str"
+    
+    log('结论:', '#006fd0', '16px', true);
+    log('1. unf: undefined, symbol, fn  属性丢失', '#2368a5', '14px');
+    log('2. reg 内容消失了', '#2368a5', '14px');
+    console.groupEnd('深拷贝 JSON.stringify版本')
+    
+    console.group('深拷贝 递归深拷贝版本')
+
+    
+    
+
+    const d2 = deepClone2(m1);
+    console.log(d2);
+    // arr: ["a"]
+    // bool: true
+    // date: {}
+    // fn: () => { console.log('function'); }
+    // nul: null
+    // num: 1
+    // obj: {d: 20}
+    // reg: {}
+    // str: "str"
+    // symbol: Symbol(1)
+    // unf: undefined
+
+    // 结论:
+    // deepClone2 递归深拷贝版本解决上述属性丢失问题
+    // 也是一般可用版本。
+    // 但是无法clone存在循环引用的对象，例如下面的例子：
+
+    const m2 = {
+      a: 1, b: ['a'], c: { d: 20 }, 
+      // JSON 不能clone方法
+      d: () => {
+        console.log('function');
+      }
+    }
+    m2.b.push(m2.c);
+    m2.c.f = m2.b; // 这样就存在了循环引用
+
+    try {
+      const d22 = deepClone2(m2); 
+      console.log(d22); 
+    } catch (error) {
+      // Uncaught RangeError: Maximum call stack size exceeded
+      console.error(error.message); 
+    }
+
+    log('结论:', '#006fd0', '16px', true);
+    log('1. 递归深拷贝版本解决上述属性丢失问题', '#2368a5', '14px');
+    log('2. 但是无法clone存在循环引用的对象', '#2368a5', '14px');
+    console.groupEnd('深拷贝 递归深拷贝版本')
+    
+
+
+    console.group('深拷贝 递归深拷贝容器暂存版本')
+    const d3 = deepClone3(m2); 
+    console.log(d3); 
+    log('1. 递归深拷贝容器暂存版本解决上述无法clone存在循环引用的对象问题', '#2368a5', '14px');
+    console.groupEnd('深拷贝 递归深拷贝容器暂存版本')
+
+
+    </script>
+</body>
+</html>

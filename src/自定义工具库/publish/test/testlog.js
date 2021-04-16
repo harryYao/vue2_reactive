@@ -13,4 +13,7 @@ const testLog = (name, fn) => {
   }
 }
 
+const log = (msg, color = '#43bb88', fontsize = '12px', isBold = false) => {
+  console.log(`%c${msg}`, `color: ${color};font-size: ${fontsize}; ${isBold?'font-weight: bold;':''}`)
+}
 // export default testLog;

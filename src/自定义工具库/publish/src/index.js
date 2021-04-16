@@ -43,7 +43,7 @@ export { throttle, throttle2 } from './function/throttle.js'
 
 // object
 export { newInstance, myInstance } from './object/object.js'
-export { clone1, clone2, deepClone1, deepClone2, deepClone3, deepClone4 } from './object/clone.js'
+export { clone, clone2, deepClone1, deepClone2, deepClone3, deepClone4 } from './object/clone.js'
 
 // pub-sub
 export { PubSub } from './pub-sub/index.js'

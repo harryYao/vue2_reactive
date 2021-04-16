@@ -1,5 +1,5 @@
 // 浅拷贝  es6 扩展运算符
-export function clone1(target) {
+export function clone(target) {
   if (typeof target === 'object' && target != null) {
     if (Array.isArray(target)) {
       return [ ...target ];
@@ -26,13 +26,6 @@ export function clone2(target) {
   return target;
 }
 
-// const obj0 = { x: 'abc', y: {m : 1}};
-// const result = clone1(obj0);
-// result.y.m = 2;
-// console.log(result);
-// console.log(obj0); //obj0.y.m = 2， 浅拷贝时，原对象的引用属性值也被改变
-
-
 /**
  * 乞丐版深拷贝 
  * 问题1: 函数属性会丢失
@@ -50,12 +43,6 @@ const m1 = {
     console.log('function');
   }
 }
-// 循环引用会出错
-// m1.b.push(m1.c);
-// m1.c.f = m1.b;
-// Uncaught TypeError: Converting circular structure to JSON
-
-const m2 = deepClone1(m1); 
 
 /**
  * 递归深拷贝
@@ -79,7 +66,6 @@ const m2 = deepClone1(m1);
   } 
   return target;
 }
-const m3 = deepClone2(m1); 
 
 /**
  * 递归深拷贝2
@@ -104,20 +90,6 @@ export function deepClone3(target, map = new Map()) {
   } 
   return target;
 }
-
-// const n1 = {
-//   a: 1, b: ['a', 'b'], c: { d: 20 }, 
-//   // JSON 不能clone方法
-//   d: () => {
-//     console.log('function');
-//   }
-// }
-// // 循环引用不再出错
-// n1.b.push(n1.c);
-// n1.c.f = n1.b;
-
-// const n2 = deepClone3(n1); 
-// console.log(n2);
 
 /**
  * 递归深拷贝3, 优化遍历性能
@@ -150,6 +122,8 @@ export function deepClone4 (target, map = new Map()) {
   }
   return target
 }
+
+
 
 
 
