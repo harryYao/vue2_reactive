@@ -1,3 +1,6 @@
+/**
+ * 单例模式
+ */
 class SingleInstance {
   test() {
     console.log('I\'m a single instance');
