@@ -46,7 +46,8 @@ export { newInstance, myInstance } from './object/object.js'
 export { clone, clone2, deepClone1, deepClone2, deepClone3, deepClone4 } from './object/clone.js'
 
 // pub-sub
-export { PubSub } from './pub-sub/index.js'
+import PubSub from './pub-sub/index.js'
+export { PubSub }
 
 // string
 export { reverseString, palindrome, truncate } from './string/index.js'

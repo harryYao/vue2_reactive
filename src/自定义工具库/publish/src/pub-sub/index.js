@@ -57,4 +57,4 @@ PubSub.unsubscribe = function (flag) {
   }
 }
 
-export { PubSub }
+export default PubSub 
