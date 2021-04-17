@@ -14,13 +14,7 @@ export function newInstance(Fn, ...args) {
   return result instanceof Object ? result: obj;
 }
 
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
 
-let obj = newInstance(Person, '张三', 20);
-// console.log(obj);
 
 // 自定义检测类型
 export function myInstance(obj, Fn) {
@@ -40,12 +34,7 @@ export function myInstance(obj, Fn) {
   }
   return false;
 }
-const p = new Person('AA', 22);
-// console.log(myInstance(p, Person)); // true
-// console.log(myInstance(p, Object)); // true
-// console.log(myInstance(Person, Object)); // true
-// console.log(myInstance(Person, Function)); // true
-// console.log(myInstance(p, Function)); // false
+
 
 
 // 合并对象  属性替换

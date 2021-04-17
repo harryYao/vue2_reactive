@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object测试</title>
+  <script src="../dist/yaoxin-utils.js"></script>
+</head>
+<body>
+  <div class="outer" style="padding: 20px;">
+    <ul id="items" style="line-height: 30px;">
+      <li>AAAAAAA</li>
+      <li>BBBBBBB</li>
+      <li>CCCCCCC</li>
+      <li>DDDDDDD</li>
+      <div>EEEEEEE</div>
+    </ul>
+  </div>
+
+  <script>
+    const { newInstance, myInstance } = yxutils;
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    let obj = newInstance(Person, '张三', 20);
+    console.log(obj);
+
+    const p = new Person('AA', 22);
+    console.log(myInstance(p, Person)); // true
+    console.log(myInstance(p, Object)); // true
+    console.log(myInstance(Person, Object)); // true
+    console.log(myInstance(Person, Function)); // true
+    console.log(myInstance(p, Function)); // false
+  </script>
+</body>
+</html>
