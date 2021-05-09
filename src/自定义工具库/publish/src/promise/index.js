@@ -180,4 +180,46 @@ Promise.all = function(promises) {
   })
 }
 
+
+/* 
+返回一个promise, 由第一个完成promise决定
+*/
+Promise.race = function (promises) {
+  return new Promise((resolve, reject) => {
+    // 遍历所有promise, 取其对应的结果
+    promises.forEach(p => {
+      // 返回的promise由第一个完成p来决定其结果
+      p.then(resolve, reject)
+    })
+  })
+}
+
+/* 
+返回一个延迟指定时间才成功(也可能失败)的promise
+*/
+Promise.resolveDelay = function (value, time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // 如果value是一个promise, 最终返回的promise的结果由value决定
+      if (value instanceof Promise) {
+        value.then(resolve, reject)
+      } else { // value不是promise, 返回的是成功的promise, 成功的值就是value
+        resolve(value)
+      }
+    }, time)
+  })
+}
+
+/* 
+返回一个延迟指定时间才失败的promise
+*/
+Promise.rejectDelay = function (reason, time) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(reason)
+    }, time)
+  })
+}
+
+
 export default Promise
