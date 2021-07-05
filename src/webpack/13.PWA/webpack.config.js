@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 /**
- * PWA离仙缓存
+ * PWA离线缓存
  */
 
 module.exports = {

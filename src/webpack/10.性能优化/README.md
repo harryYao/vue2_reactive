@@ -104,7 +104,7 @@ HMR: hot module replacement 热模块替换 / 热模块更新
 document.getElementById('btn').onclick= function () {
   // 懒加载~：当文件需要使用是才加载
   import(/* webpackChunkName: 'test' */'./test')
-    .tehn((add) => {
+    .then((add) => {
       console.log(add(2,3))
     })
 }
@@ -112,7 +112,7 @@ document.getElementById('btn').onclick= function () {
 document.getElementById('btn').onclick= function () {
   // 预加载 prefetch：会在使用之前，提前加载js文件
   import(/* webpackChunkName: 'test', webpackPrefetch: true */'./test')
-    .tehn((add) => {
+    .then((add) => {
       console.log(add(2,3))
     })
 }
